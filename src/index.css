@@ -25,9 +25,22 @@ nav{
   color: #5383FF;
   font-size: 7rem;
   text-shadow: -0.22rem 0.22rem #031941;
+  margin-bottom: 3rem;
 }
 #first-letter{
   color: #5383FF;
   font-size: 10rem;
   text-shadow: -0.22rem 0.22rem #031941;
+}
+.input-area{
+  text-align: center;
+}
+.search{
+  width: 70%;
+  max-width: 50rem;
+  height: 3rem;
+  border: 2px solid #C9C7C7;
+  border-radius: 10px;
+  padding-left: 2rem;
+  font-size: 0.9rem;
 }
