@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* Navbar */
 nav{
   display: flex;
   justify-content: flex-end;
@@ -20,18 +21,22 @@ nav{
   margin-top: 1.2rem;
   margin-right: 1rem
 }
+/* Hero */
 .hero{
   text-align: center;
   color: #5383FF;
   font-size: 7rem;
   text-shadow: -0.22rem 0.22rem #031941;
   margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 #first-letter{
   color: #5383FF;
   font-size: 10rem;
   text-shadow: -0.22rem 0.22rem #031941;
 }
+
+/* Search Bar */
 .input-area{
   text-align: center;
 }
@@ -43,4 +48,37 @@ nav{
   border-radius: 10px;
   padding-left: 2rem;
   font-size: 0.9rem;
+}
+/* Card */
+.cards{
+  display: flex;
+  width: 70%;
+  min-width: 55rem;
+  max-width: 70rem;
+  justify-content: space-around;
+  margin-top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card{
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 14rem;
+  width: 15rem;
+  cursor: pointer;
+}
+.profile-picture{
+  height: 7rem;
+  width: 7rem;
+}
+.name{
+  margin: 0;
+  font-size: 1.7rem;
+  margin-bottom: 0.7rem;
+}
+.personal-info{
+  margin: 0;
+  margin-top: 0.5rem;
 }
