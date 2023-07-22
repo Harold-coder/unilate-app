@@ -6,8 +6,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+nav{
+  display: flex;
+  justify-content: flex-end;
+  height: 4rem;
+}
+.inscription{
+  font-size: 1.5rem;
+  color: white;
+  background-color: #5383FF;
+  border: 1px solid #5383FF;
+  border-radius: 5px;
+  margin-top: 1.2rem;
+  margin-right: 1rem
+}
+.hero{
+  text-align: center;
+  color: #5383FF;
+  font-size: 7rem;
+  text-shadow: -0.22rem 0.22rem #031941;
+}
+#first-letter{
+  color: #5383FF;
+  font-size: 10rem;
+  text-shadow: -0.22rem 0.22rem #031941;
 }
