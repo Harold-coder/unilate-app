@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 export default function NavbarDoctor(props) {
     function handleClickTitle(){
@@ -8,9 +9,9 @@ export default function NavbarDoctor(props) {
         console.log("Profile")
     }
     return (
-        <nav>
-            <p className="title" onClick={handleClickTitle}>Unilate</p>
-            <img className="profile-picture" onClick={handleClickProfile} src={require("../../images/"+props.picture)} alt="pic"></img>
+        <nav className="navbar-doctor-page">
+             <Link className="title-doctor-page" to="/">Unilate</Link>
+            <img className="profile-picture-doctor-page" onClick={handleClickProfile} src={require("../../images/"+props.picture)} alt="pic"></img>
         </nav>
     )
 }
