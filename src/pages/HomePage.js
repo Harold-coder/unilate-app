@@ -1,12 +1,13 @@
-import Card from '../components/Card';
-import Hero from '../components/Hero';
-import Navbar from '../components/Navbar';
-import Search from '../components/Search';
+import Card from '../components/HomePage/Card';
+import Hero from '../components/HomePage/Hero';
+import NavbarHome from '../components/HomePage/NavbarHome';
+import Navbar from '../components/HomePage/NavbarHome';
+import Search from '../components/HomePage/Search';
 
 function Home() {
   return (
     <div className='home-page'>
-      <Navbar/>
+      <NavbarHome/>
       <Hero/>
       <Search/>
       <div className='cards'>

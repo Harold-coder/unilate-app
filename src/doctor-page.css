@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* Navbar */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1.2rem;
+    padding-right: 0.8rem;
+    height: 5rem;
+    background-color: #5383FF;
+    color: white;
+    font-size: 2rem;
+}
+.title{
+    cursor: pointer;
+}
+.profile-picture{
+    height: 4rem;
+    width: 4rem;
+    cursor: pointer;
+}
+/* Main */
+.date-time{
+    text-align: center;
+    margin-top: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+}
+/* Retard */
+.retard-doctor{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+}
+.dropdown{
+    text-align: center;
+    font-size: 1.3rem;
+    height: 3rem;
+    width: 10rem;
+    margin-bottom: 1em;
+    background-color: #5383FF;
+    color: white;
+    border: 2px solid #5383FF;
+    border-radius: 5px;
+    appearance: none;
+    cursor: pointer;
+}
+.retard-patient{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+}
+#retard-announced{
+    text-align: center;
+    font-size: 1.3rem;
+    height: 2rem;
+    width: 10rem;
+    margin: 0;
+    padding-top: 0.5rem;
+    /* padding-bottom: 1rem; */
+    margin-bottom: 1em;
+    background-color: #5383FF;
+    color: white;
+    border: 2px solid #5383FF;
+    border-radius: 5px;
+}

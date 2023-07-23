@@ -6,7 +6,7 @@ export default function Card(props) {
     }
     return (
         <div className="card" onClick={handleClick}>
-            <img className="profile-picture" src={require("../images/"+props.picture)} alt="pic"></img>
+            <img className="profile-picture" src={require("../../images/"+props.picture)} alt="pic"></img>
             <h1 className="name">{props.name}</h1>
             <p className="personal-info">{props.city}</p>
             <p className="personal-info">{props.job}</p>
