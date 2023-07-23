@@ -1,10 +1,9 @@
 import Card from '../components/HomePage/Card';
 import Hero from '../components/HomePage/Hero';
 import NavbarHome from '../components/HomePage/NavbarHome';
-import Navbar from '../components/HomePage/NavbarHome';
 import Search from '../components/HomePage/Search';
 
-function Home() {
+function HomePage() {
   return (
     <div className='home-page'>
       <NavbarHome/>
@@ -34,4 +33,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

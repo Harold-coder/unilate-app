@@ -1,11 +1,13 @@
-import DoctorPage from './pages/DoctorPage';
-// import Home from './pages/HomePage';
+// import DoctorPage from './pages/DoctorPage';
+// import HomePage from './pages/HomePage';
+import PatientPage from "./pages/PatientPage";
 
 function App() {
   return (
     <div className='app'>
-      {/* <Home/> */}
-      <DoctorPage/>
+      {/* <HomePage/> */}
+      {/* <DoctorPage/> */}
+      <PatientPage/>
     </div>
   );
 }

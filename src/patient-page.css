@@ -1,0 +1,47 @@
+.profile-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 14rem;
+    width: 70%;
+    max-width: 35rem;
+}
+.profile-picture{
+    height: 13rem;
+    width: 13rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.infos{
+    width: 40%;
+    max-width: 14rem;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.5rem;
+    padding-right: 2rem;
+}
+.name{
+    font-size: 1.5rem;
+}
+.retard-patient{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 4rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+}
