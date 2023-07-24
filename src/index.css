@@ -120,9 +120,25 @@ nav{
     align-items: center;
     width: 70%;
     min-width: 20rem;
+    margin-top: 5rem;
   }
   .card{
     margin-top: 0;
     margin-bottom: 2rem;
+  }
+}
+@media (max-width: 450px) {
+  .hero{
+    text-align: center;
+    color: #5383FF;
+    font-size: 5.6rem;
+    text-shadow: -0.18rem 0.18rem #031941;
+    margin-bottom: 2rem;
+    margin-top: 2.4rem;
+  }
+  #first-letter{
+    color: #5383FF;
+    font-size: 8rem;
+    text-shadow: -0.18rem 0.18rem #031941;
   }
 }

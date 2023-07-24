@@ -10,7 +10,7 @@ function PatientPage() {
   const { props } = location.state
   console.log(props)
   return (
-    <div className='doctor-page'>
+    <div className='patient-page'>
       <NavbarPatient/>
       <DoctorProfile
         picture={props.picture}
