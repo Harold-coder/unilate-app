@@ -18,9 +18,9 @@ function HomePage() {
         />
         <Card 
           picture="person-image.png" 
-          name="Marie-Anne Labaisse" 
-          city="Tournai"
-          job="Radiologue"
+          name="Anne-Sophie Lagarde" 
+          city="Chaumont-Gistoux"
+          job="Cardiologue"
         />
         <Card 
           picture="single-person.png" 
