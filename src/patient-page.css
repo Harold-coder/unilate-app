@@ -61,3 +61,28 @@
     width: 70%;
     max-width: 35rem;
 }
+
+@media (max-width: 490px) {
+    .profile-picture-patient-page{
+        height: 10rem;
+        width: 9rem;
+    }
+    .infos-patient-page{
+        font-size: 1.3rem;
+    }
+    .name-patient-page{
+        font-size: 1.3rem;
+    }
+}
+@media (max-width: 380px) {
+    .profile-picture-patient-page{
+        height: 8rem;
+        width: 8rem;
+    }
+    .infos-patient-page{
+        font-size: 1rem;
+    }
+    .name-patient-page{
+        font-size: 1.1rem;
+    }
+}
