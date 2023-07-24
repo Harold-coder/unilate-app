@@ -60,7 +60,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 70%;
     max-width: 35rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 @media (max-width: 490px) {
