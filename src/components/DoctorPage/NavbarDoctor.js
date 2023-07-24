@@ -2,9 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export default function NavbarDoctor(props) {
-    function handleClickTitle(){
-        console.log("Unilate")
-    }
     function handleClickProfile(){
         console.log("Profile")
     }
