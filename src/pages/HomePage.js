@@ -12,21 +12,21 @@ function HomePage() {
       <div className='cards'>
         <Card 
           picture="person-image.png" 
-          name="Jeanne VanDerkn" 
-          city="Tournai"
+          name="Jeanne Vdekerck" 
+          city="Bruxelles"
           job="Surgeon"
         />
         <Card 
           picture="person-image.png" 
-          name="Francois Poitier" 
-          city="Walhain"
-          job="Ophtalmo"
+          name="Marie-Anne Labaisse" 
+          city="Tournai"
+          job="Radiologue"
         />
         <Card 
-          picture="person-image.png" 
+          picture="single-person.png" 
           name="Etienne Castiaux" 
           city="Wavre"
-          job="Plombier"
+          job="Généraliste"
         />
       </div>
     </div>

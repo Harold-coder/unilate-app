@@ -10,8 +10,10 @@ export default function NavbarDoctor(props) {
     }
     return (
         <nav className="navbar-doctor-page">
-             <Link className="title-doctor-page" to="/">Unilate</Link>
-            <img className="profile-picture-doctor-page" onClick={handleClickProfile} src={require("../../images/"+props.picture)} alt="pic"></img>
+            <Link className="title-doctor-page" to="/">Unilate</Link>
+            <Link className="link" to="/errorPage">
+                <img className="profile-picture-doctor-page" onClick={handleClickProfile} src={require("../../images/"+props.picture)} alt="pic"></img>
+            </Link>
         </nav>
     )
 }

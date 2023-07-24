@@ -19,7 +19,8 @@ nav{
   border: 1px solid #5383FF;
   border-radius: 5px;
   margin-top: 1.2rem;
-  margin-right: 1rem
+  margin-right: 1rem;
+  cursor: pointer;
 }
 /* Hero */
 .hero{
@@ -75,10 +76,53 @@ nav{
 }
 .name{
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   margin-bottom: 0.7rem;
 }
 .personal-info{
   margin: 0;
   margin-top: 0.5rem;
+}
+
+.link{
+  text-decoration: none;
+  color: #031941;
+}
+/* Error Page */
+.error-page{
+  text-align: center;
+  font-size: 2rem;
+}
+.construction-image{
+  margin-top: 5rem;
+  height: 30rem;
+  width: 30rem;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .construction-image {
+    animation: construction-image-spin infinite 10s linear;
+  }
+}
+@keyframes construction-image-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 900px) {
+  .cards{
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    width: 70%;
+    min-width: 20rem;
+  }
+  .card{
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 }
