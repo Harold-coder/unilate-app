@@ -99,6 +99,87 @@ nav{
   width: 30rem;
   cursor: pointer;
 }
+.login-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-full-form, .signup-full-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 60%;
+  max-width: 40rem;
+  height: 35rem;
+  margin: 2rem;
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 2px solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+}
+.signup-full-form{
+  height: 40rem;
+}
+.login-form, .signup-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 20rem;
+  margin-bottom: 2rem;
+}
+.signup-form{
+  height: 35rem;
+}
+.password-div, .email-div{
+  display: flex;
+  flex-direction: column;
+}
+.login-label, .signup-label{
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #5383FF;
+}
+.signup-label{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.login-input{
+  width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2rem;
+  border: 1.5px solid #C9C7C7;
+  border-radius: 5px;
+  padding-left: 0.5rem;
+}
+.login-button, .signup-button{
+  font-size: 1.1rem;
+  width: 9rem;
+  min-height: 2.5rem;
+  cursor: pointer;
+  color: white;
+  background-color: #5383FF;
+  border: 1px solid #5383FF;
+  border-radius: 5px;
+}
+.signup-button{
+  margin-top: 2rem;
+}
+.create-account{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 2px solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .construction-image {
     animation: construction-image-spin infinite 10s linear;

@@ -3,6 +3,9 @@ import DoctorPage from './pages/DoctorPage';
 import HomePage from './pages/HomePage';
 import PatientPage from "./pages/PatientPage";
 import Error from "./pages/Error";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ModifyProfile from "./pages/ModifyProfile";
 
 
 function App() {
@@ -14,6 +17,9 @@ function App() {
         <Route path="/doctorPage" element={<DoctorPage />} />
         <Route path="/patientPage" element={<PatientPage />} />
         <Route path="/errorPage" element={<Error />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/modifyProfile" element={<ModifyProfile />} />
       </Routes>
     </BrowserRouter>
     </div>
