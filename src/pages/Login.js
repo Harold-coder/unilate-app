@@ -20,7 +20,7 @@ function Login() {
             </form>
             <div className="create-account">
                 <label className="login-label">Pas encore de compte?</label>
-                <Link className="link" to="/signup"><button className="login-button">Créer un compte</button></Link>
+                <Link className="link" to="/signup"><button className="create-button">Créer un compte</button></Link>
             </div>
         </div>
     </div>
