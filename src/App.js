@@ -8,6 +8,10 @@ import SignUp from "./pages/SignUp";
 import ModifyProfile from "./pages/ModifyProfile";
 
 
+// arsenuc est encore la
+
+// Haroldo ici
+
 function App() {
   return (
     <div>
@@ -27,3 +31,5 @@ function App() {
 }
 
 export default App;
+
+
