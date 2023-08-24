@@ -25,14 +25,13 @@ nav{
 /* Hero */
 .hero{
   text-align: center;
-  color: #ff5353;
+  color: #5383FF;
   font-size: 7rem;
   text-shadow: -0.22rem 0.22rem #031941;
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
 #first-letter{
-  color: #5383FF;
   font-size: 10rem;
   text-shadow: -0.22rem 0.22rem #031941;
 }
