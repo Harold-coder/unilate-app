@@ -1,7 +1,6 @@
 import NavbarDoctor from "../components/DoctorPage/NavbarDoctor";
 import Retard from "../components/General/Retard";
 import DateTime from "../components/General/DateTime";
-import "../doctor-page.css"
 
 function DoctorPage() {
   return (

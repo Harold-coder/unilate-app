@@ -20,6 +20,7 @@ nav{
   border-radius: 5px;
   margin-top: 1.2rem;
   margin-right: 1rem;
+  border-width: 10px;
   cursor: pointer;
 }
 /* Hero */
@@ -30,6 +31,7 @@ nav{
   text-shadow: -0.22rem 0.22rem #031941;
   margin-bottom: 3rem;
   margin-top: 3rem;
+  cursor: default;
 }
 #first-letter{
   font-size: 10rem;
@@ -69,6 +71,15 @@ nav{
   width: 15rem;
   cursor: pointer;
 }
+
+/*
+.card:hover{
+  border: 10px solid white;
+  transition-duration: 40ms;
+
+}
+*/
+
 .profile-picture{
   height: 7rem;
   width: 7rem;

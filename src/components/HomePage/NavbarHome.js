@@ -3,10 +3,11 @@ import { Link } from "react-router-dom"
 
 export default function NavbarHome() {
     return (
-        <Link className="link" to="/login">
+        
         <nav>
-            <button className="inscription">s'inscrire</button>
+            <Link className="link" to="/login">
+                <button className="inscription">s'inscrire</button>
+            </Link>
         </nav>
-        </Link>
     )
 }
