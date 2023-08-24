@@ -6,7 +6,7 @@ import "../doctor-page.css"
 function DoctorPage() {
   return (
     <div className='doctor-page'>
-      <NavbarDoctor picture="person-image.png"/>
+      <NavbarDoctor picture="man-image.png"/>
       <DateTime />
       <Retard page="doctor"/>
     </div>
