@@ -6,6 +6,8 @@ import "../doctor-page.css"
 import { useLocation } from 'react-router-dom'
 
 function PatientPage() {
+
+  // Harold 
   const location = useLocation()
   const { props } = location.state
   console.log(props)
