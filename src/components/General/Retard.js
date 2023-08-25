@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 export default function Retard(props) {
     const [user, setUser] = useState()
     const [loaded, setLoaded] = useState(false)
+    const [delay, setDelay] = useState()
+
     const params = useParams()
     const id = params.id
 
@@ -14,8 +16,9 @@ export default function Retard(props) {
         id: id,
         }).then((data) => {
         setUser(data.data[0])
-        console.log(data.data[0])
+        // console.log(data.data[0])
         setLoaded(true)
+        setDelay(data.data[0].delay)
         });
     }
 
@@ -23,22 +26,21 @@ export default function Retard(props) {
         getUserById(id);
     }, [id])
 
-    const updateDelay = (id, delay) => {
-        Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/updateDelay", {
-        id: id,
-        delay: delay
-        }).then((data) => {
-        setUser(data.data[0])
-        setLoaded(true)
-        });
-        window.location.reload(false);
-    }
+    // const updateDelay = (id, delay) => {
+    //     Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/updateDelay", {
+    //     id: id,
+    //     delay: delay
+    //     }).then((data) => {
+    //     setUser(data.data[0])
+    //     setLoaded(true)
+    //     });
+    // }
     
     if (props.page === "doctor" && loaded){
         return (
             <div className="retard-doctor">
                 <p>Retard annoncé:</p>
-                <select className="dropdown" value={user.delay} onChange={updateDelay}>
+                <select className="dropdown" value={delay} onChange={(e) => setDelay(e.target.value)}>
                     <option value="0">Pas de retard</option>
                     <option value="15">15 minutes</option>
                     <option value="30">30 minutes</option>
@@ -63,6 +65,7 @@ export default function Retard(props) {
                 </div>
                 <div className="retard-patient">
                     <p>Retard annoncé:</p>
+                    <p id="retard-announced">{user.delay} minute(s)</p>
                     <p id="retard-announced">{user.delay} minute(s)</p>
                 </div>
             </div>
