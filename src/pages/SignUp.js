@@ -10,7 +10,7 @@ function SignUp() {
   const [fullName, setFullName] = useState()
   const [profession, setProfession] = useState()
   const [city, setCity] = useState()
-  const [gender, setGender] = useState()
+  const [gender, setGender] = useState("man")
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)
@@ -30,14 +30,12 @@ function SignUp() {
 
   function submitForm(event){
     event.preventDefault();
-    console.log(!email)
     if (!email || email.length < 5 || !fullName || fullName.length < 4 || !profession || profession.length < 2 || !city || city.length < 2){
       setValidFormat(false);
     } else if (!password || !confirmPassword || password !== confirmPassword || password.length < 3){
       setPasswordMatch(false);
     }
     else {
-      setPasswordMatch(true);
       createUser(email, password, fullName, profession, city, gender);
       navigate('/doctorPage')
     }

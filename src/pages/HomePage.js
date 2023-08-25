@@ -13,8 +13,9 @@ function HomePage() {
     var users = []
     Axios.get("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUsers").then((data) => {
       users = data.data;
-      const newRandomNumbers = [];
-      const newRandomUsers = [];
+      var lastAdded = users.length - 1
+      const newRandomNumbers = [lastAdded];
+      const newRandomUsers = [users[lastAdded]];
       while (newRandomNumbers.length < 3) {
         const randomNumber = Math.floor(Math.random() * users.length);
         if (!newRandomNumbers.includes(randomNumber)) {
