@@ -7,7 +7,7 @@
     height: 5rem;
     background-color: #5383FF;
     color: white;
-    font-size: 2rem;
+    font-size: 4rem;
 }
 .title-patient-page{
     cursor: pointer;
@@ -61,6 +61,7 @@
     width: 70%;
     max-width: 35rem;
     margin-bottom: 4rem;
+    
 }
 
 .heure-patient{
