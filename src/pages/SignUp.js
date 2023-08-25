@@ -37,7 +37,7 @@ function SignUp() {
     }
     else {
       createUser(email, password, fullName, profession, city, gender);
-      navigate('/doctorPage')
+      navigate('/login')
     }
   }
 

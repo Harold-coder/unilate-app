@@ -34,6 +34,7 @@ function HomePage() {
       return (
         <Card 
         key={user.id}
+        id = {user.id}
         picture = {user.gender.concat("-image.png")}
         name = {user.fullName}
         city = {user.city}

@@ -9,7 +9,6 @@ function PatientPage() {
 
   const location = useLocation()
   const { props } = location.state
-  console.log(props)
   return (
     <div className='patient-page'>
       <NavbarPatient/>
