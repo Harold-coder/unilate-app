@@ -3,7 +3,7 @@ import Hero from '../components/HomePage/Hero';
 import NavbarHome from '../components/HomePage/NavbarHome';
 import Search from '../components/HomePage/Search';
 import React from 'react';
-import Axios from "axios"
+import Axios from "axios";
 import { useEffect, useState} from 'react';
 
 function HomePage() {
