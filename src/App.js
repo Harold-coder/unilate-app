@@ -19,7 +19,7 @@ function App() {
         <Route path="/errorPage" element={<Error />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/modifyProfile" element={<ModifyProfile />} />
+        <Route path="/modifyProfile/:id" element={<ModifyProfile />} />
       </Routes>
     </BrowserRouter>
     </div>

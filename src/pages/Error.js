@@ -5,7 +5,7 @@ function Error() {
       <div className='error-page'>
         <p>Cette page est en cours de développement...</p>
         <Link className="link" to="/">
-            <img className="construction-image" src={require("../images/construction-image.jpg")} alt="pic"></img>
+            <img className="construction-image" src={require("../images/undefined-image.png")} alt="pic"></img>
         </Link>
       </div>
     );
