@@ -81,8 +81,8 @@ function SignUp() {
                 <div className="password-div">
                 <label className="signup-label">Confirmer le mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                {!passwordMatch && <label className="signup-label signup-label-red">Le mot de passe ne match pas.</label>}
-                {!validFormat && <label className="signup-label signup-label-red">Some argument missing.</label>}
+                {!passwordMatch && <label className="signup-label signup-label-red">Les mots de passe ne correspondent pas.</label>}
+                {!validFormat && <label className="signup-label signup-label-red">Certains champs n'ont pas été complétés.</label>}
                 </div>
                 <button className="signup-button" onClick={submitForm}>Créer le compte</button>
             </form>
