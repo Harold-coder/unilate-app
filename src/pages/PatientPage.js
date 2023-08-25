@@ -6,9 +6,9 @@ import "../doctor-page.css"
 import { useLocation } from 'react-router-dom'
 
 function PatientPage() {
-
   const location = useLocation()
   const { props } = location.state
+
   return (
     <div className='patient-page'>
       <NavbarPatient/>

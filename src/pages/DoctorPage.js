@@ -22,7 +22,7 @@ function DoctorPage() {
 
   useEffect(() => {
     getUserById(id);
-  })
+  }, [id])
 
   return (
     <div className='doctor-page'>

@@ -1,12 +1,44 @@
-import React from "react"
+import React from "react";
+import Axios from "axios";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Retard(props) {
+    const [user, setUser] = useState()
+    const [loaded, setLoaded] = useState(false)
+    const params = useParams()
+    const id = params.id
+
+    const getUserById = (id) => {
+        Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUserById", {
+        id: id,
+        }).then((data) => {
+        setUser(data.data[0])
+        console.log(data.data[0])
+        setLoaded(true)
+        });
+    }
+
+    useEffect(() => {
+        getUserById(id);
+    }, [id])
+
+    const updateDelay = (id, delay) => {
+        Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/updateDelay", {
+        id: id,
+        delay: delay
+        }).then((data) => {
+        setUser(data.data[0])
+        setLoaded(true)
+        });
+        window.location.reload(false);
+    }
     
-    if (props.page === "doctor"){
+    if (props.page === "doctor" && loaded){
         return (
             <div className="retard-doctor">
                 <p>Retard annoncé:</p>
-                <select className="dropdown">
+                <select className="dropdown" value={user.delay} onChange={updateDelay}>
                     <option value="0">Pas de retard</option>
                     <option value="15">15 minutes</option>
                     <option value="30">30 minutes</option>
@@ -16,7 +48,7 @@ export default function Retard(props) {
             </div>
         )
     }
-    else if (props.page === "patient") {
+    else if (props.page === "patient" && loaded) {
         return (
             <div>
                 <div className="heure-patient">
@@ -31,7 +63,7 @@ export default function Retard(props) {
                 </div>
                 <div className="retard-patient">
                     <p>Retard annoncé:</p>
-                    <p id="retard-announced">20 minutes</p>
+                    <p id="retard-announced">{user.delay} minute(s)</p>
                 </div>
             </div>
         )

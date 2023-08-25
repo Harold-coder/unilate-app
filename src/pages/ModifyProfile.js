@@ -71,9 +71,8 @@ function ModifyProfile() {
       updateUserPassord(id, password);
     } else if (password && password !== confirmPassword){
       setPasswordMatch(false);
-    } else{
-      updateUserInfo(id, email, fullName, profession, city, gender);
     }
+    updateUserInfo(id, email, fullName, profession, city, gender);
   }
   return (
     <div>
