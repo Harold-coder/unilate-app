@@ -132,7 +132,7 @@ nav{
   border-radius: 10px;
 }
 .signup-full-form{
-  height: 45rem;
+  height: 50rem;
 }
 .login-form, .signup-form{
   display: flex;
@@ -143,7 +143,7 @@ nav{
   margin-bottom: 2rem;
 }
 .signup-form{
-  height: 42rem;
+  height: 47rem;
 }
 .password-div, .email-div{
   display: flex;
@@ -173,7 +173,7 @@ nav{
 }
 .login-button, .signup-button, .create-button{
   font-size: 1.1rem;
-  width: 9rem;
+  width: 10rem;
   min-height: 2.5rem;
   cursor: pointer;
   color: white;

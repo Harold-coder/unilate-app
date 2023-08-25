@@ -71,7 +71,10 @@ function SignUp() {
                 </div>
                 <div className="email-div">
                 <label className="signup-label">Genre</label>
-                <input type="text" placeholder="Homme" className="login-input" onChange={(e) => setGender(e.target.value)}></input>
+                <select className="dropdownGender" onChange={(e) => setGender(e.target.value)}>
+                        <option value="man">Homme</option>
+                        <option value="woman">Femme</option>
+                    </select>
                 </div>
                 <div className="password-div">
                 <label className="signup-label">Mot de passe</label>
