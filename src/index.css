@@ -22,7 +22,19 @@ nav{
   margin-right: 1rem;
   border-width: 10px;
   cursor: pointer;
+  transition-duration: 400ms
 }
+
+
+.inscription:hover{
+  background-color: #2964f8;
+  border-color: #2964f8;
+  transition-duration: 400ms
+}
+
+
+
+
 /* Hero */
 .hero{
   text-align: center;
@@ -33,9 +45,9 @@ nav{
   margin-top: 3rem;
   cursor: default;
 }
+
 #first-letter{
   font-size: 10rem;
-  text-shadow: -0.22rem 0.22rem #031941;
 }
 
 /* Search Bar */
