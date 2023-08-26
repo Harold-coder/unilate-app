@@ -212,6 +212,7 @@ nav{
   background-color: #5383FF;
   border: 1px solid #5383FF;
   border-radius: 5px;
+  margin-top: 2rem;
   transition-duration: 100ms
 
 }
@@ -222,14 +223,15 @@ nav{
   transition-duration: 400ms
 
 }
-.signup-button{
+
+/* .signup-button{
   margin-top: 2rem;
   border: .8rem solid #5383FF;
 }
 
 .signup-button:hover{
   border: .8rem solid #2964f8;
-}
+} */
 
 .create-button{
   padding-bottom: 0.3rem;
