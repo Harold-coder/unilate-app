@@ -66,7 +66,6 @@ export default function Retard(props) {
                 <div className="retard-patient">
                     <p>Retard annoncé:</p>
                     <p id="retard-announced">{user.delay} minute(s)</p>
-                    <p id="retard-announced">{user.delay} minute(s)</p>
                 </div>
             </div>
         )
