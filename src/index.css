@@ -224,7 +224,13 @@ nav{
 }
 .signup-button{
   margin-top: 2rem;
+  border: .8rem solid #5383FF;
 }
+
+.signup-button:hover{
+  border: .8rem solid #2964f8;
+}
+
 .create-button{
   padding-bottom: 0.3rem;
   padding-top: 0.3rem;

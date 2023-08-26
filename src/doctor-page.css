@@ -56,6 +56,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 70%;
     max-width: 35rem;
+    padding-bottom: 3rem;
 }
 .dropdown{
     text-align: center;
@@ -116,4 +117,9 @@ body {
     color: white;
     border: 2px solid #5383FF;
     border-radius: 5px;
+}
+
+.retard-save {
+    text-align: center;
+    padding-top: 2rem;
 }

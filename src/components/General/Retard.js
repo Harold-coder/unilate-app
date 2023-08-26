@@ -50,16 +50,31 @@ export default function Retard(props) {
     
     if (props.page === "doctor" && loaded){
         return (
-            <div className="retard-doctor">
-                <p>Retard annoncé:</p>
-                <select className="dropdown" value={user.delay} onChange={(e) => setDelay(e.target.value)}>
-                    <option value="0">Pas de retard</option>
-                    <option value="15">15 minutes</option>
-                    <option value="30">30 minutes</option>
-                    <option value="45">45 minutes</option>
-                    <option value="60">1 heure</option>
-                </select>
+            <div>
+                <div className="retard-doctor">
+                    <p>Retard annoncé:</p>
+                    <select className="dropdown" value={delay} onChange={(e) => setDelay(e.target.value)}>
+                        <option value="0">Pas de retard</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">1 heure</option>
+                    </select>
+
+                    <p>Jusqu'a:</p>
+                    <select className="dropdown" value={delay} onChange={(e) => setDelay(e.target.value)}>
+                        <option value="0">15 heure</option>
+                        <option value="15">16 heure</option>
+                        <option value="30">17 heure</option>
+                        <option value="45">18 heure</option>
+                        <option value="60">19 heure</option>
+                    </select>
+                    <button className="signup-button" >Enregistrer</button>
+                </div>
+
+
             </div>
+           
         )
     }
     else if (props.page === "patient" && loaded) {
