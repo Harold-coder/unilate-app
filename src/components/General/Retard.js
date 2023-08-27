@@ -101,7 +101,7 @@ export default function Retard(props) {
                 { patientHour !== "0" && 
                 <div className="retard-patient">
                     <p>Retard annoncé:</p>
-                    <p id="retard-announced">{delay} minute{delay>0 && "s"}</p>
+                    <p id="retard-announced">{delayToText[delay]}</p>
                 </div>
                 }
             </div>
