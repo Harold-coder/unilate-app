@@ -6,7 +6,7 @@ export default function NavbarHome() {
         
         <nav>
             <Link className="link" to="/login">
-                <button className="inscription">s'inscrire</button>
+                <button className="inscription">Médecin</button>
             </Link>
         </nav>
     )
