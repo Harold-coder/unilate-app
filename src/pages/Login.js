@@ -2,17 +2,24 @@ import { Link, useNavigate } from "react-router-dom";
 import NavbarPatient from "../components/PatientPage/NavbarPatient";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { urlServer } from "../App";
 
 function Login() {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
   const [invalidCredentials, setInvalidCredentials] = useState(false)
+  const [errorMessage, setErrorMessage] = useState()
+
+  // const [loginStatus, setLoginStatus] = useState(false)
+
+  Axios.defaults.withCredentials = true;
 
   const navigate = useNavigate();
 
   const confirmLogin = (email, password) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/confirmLogin", {
+    console.log("here")
+    Axios.post(`${urlServer}confirmLogin`, {
       email: email,
       password: password
     }).then((data) => {
@@ -21,6 +28,7 @@ function Login() {
         navigate(`/doctorPage/${user[0].id}`)
       }
       else{
+        setErrorMessage(data.data)
         setInvalidCredentials(true)
       }
     });
@@ -35,6 +43,13 @@ function Login() {
     setInvalidCredentials(false)
   }, [email, password]);
 
+  // useEffect(() => {
+  //   Axios.get(`${urlServer}isLogin`).then((response) => {
+  //     if (response.data.loggedIn === true){
+  //       setLoginStatus(response.data.user[0].id)
+  //     }
+  //   })
+  // }, [])
 
   return (
     <div>
@@ -49,7 +64,7 @@ function Login() {
                 <div className="password-div">
                 <label className="login-label">Mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
-                {invalidCredentials && <label className="signup-label signup-label-red">Mauvais mdp ou email</label>}
+                {invalidCredentials && <label className="signup-label signup-label-red">{errorMessage}</label>}
                 </div>
                 <button className="login-button" onClick={submitConnect}>Se connecter</button>
             </form>

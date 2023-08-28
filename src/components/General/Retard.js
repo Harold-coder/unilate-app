@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { urlServer } from "../../App";
 
 export default function Retard(props) {
     const date = new Date();
@@ -25,7 +26,7 @@ export default function Retard(props) {
     }
 
     const getUserById = (id) => {
-        Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUserById", {
+        Axios.post(`${urlServer}getUserById`, {
         id: id,
         }).then((data) => {
         setUser(data.data[0])
@@ -40,7 +41,7 @@ export default function Retard(props) {
     }, [id])
 
     const updateDelay = () => {
-        Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/updateDelay", {
+        Axios.post(`${urlServer}updateDelay`, {
         id: id,
         delay: delay,
         endDelay: endDelay

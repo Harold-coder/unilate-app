@@ -4,6 +4,7 @@ import DateTime from "../components/General/DateTime";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import { urlServer } from "../App";
 
 function DoctorPage() {
   const [user, setUser] = useState()
@@ -12,7 +13,7 @@ function DoctorPage() {
   const id = params.id
 
   const getUserById = (id) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUserById", {
+    Axios.post(`${urlServer}getUserById`, {
       id: id,
     }).then((data) => {
       setUser(data.data[0])

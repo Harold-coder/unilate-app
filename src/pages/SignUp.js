@@ -1,7 +1,8 @@
 import NavbarPatient from "../components/PatientPage/NavbarPatient";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Axios from "axios"
+import Axios from "axios";
+import { urlServer } from "../App";
 
 function SignUp() {
   const [email, setEmail] = useState()
@@ -18,7 +19,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const createUser = (email, password, fullName, profession, city, gender) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/createUser", {
+    Axios.post(`${urlServer}createUser`, {
       email: email,
       password: password,
       fullName: fullName,

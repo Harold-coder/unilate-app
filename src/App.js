@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ModifyProfile from "./pages/ModifyProfile";
 
+// export const urlServer = "http://localhost:3001/";
+export const urlServer = "https://unilate-server-f22fc8c7c32c.herokuapp.com/";
 
 function App() {
   return (

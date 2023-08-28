@@ -2,6 +2,7 @@ import Card from './Card';
 import React from "react";
 import Axios from "axios";
 import { useEffect, useState} from 'react';
+import { urlServer } from '../../App';
 
 export default function Search() {
     const [usersShown, setUsersShown] = useState([])
@@ -9,7 +10,7 @@ export default function Search() {
 
     function showRandomUsers() {
         var users = []
-        Axios.get("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUsers").then((data) => {
+        Axios.get(`${urlServer}getUsers`).then((data) => {
         users = data.data;
         const newRandomNumbers = [];
         const newusersShown = [];
@@ -29,7 +30,7 @@ export default function Search() {
     }, []);
 
     function searchUser(fullName){
-        Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/searchUser", {
+        Axios.post(`${urlServer}searchUser`, {
             fullName: fullName
         }).then((data) => {
             setUsersShown(data.data)

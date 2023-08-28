@@ -2,6 +2,7 @@ import NavbarPatient from "../components/PatientPage/NavbarPatient";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
+import { urlServer } from "../App";
 
 // This page needs to be modified a lot hihi
 function ModifyProfile() {
@@ -22,7 +23,7 @@ function ModifyProfile() {
   const id = params.id
 
   const getUserById = (id) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUserById", {
+    Axios.post(`${urlServer}getUserById`, {
       id: id,
     }).then((data) => {
       const user = data.data[0]
@@ -36,7 +37,7 @@ function ModifyProfile() {
   }
 
   const updateUserInfo = (id, email, fullName, profession, city, gender) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/updateUserInfo", {
+    Axios.post(`${urlServer}updateUserInfo`, {
       id: id,
       email: email,
       fullName: fullName,
@@ -48,7 +49,7 @@ function ModifyProfile() {
   }
 
   const updateUserPassord = (id, password) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/updateUserPassword", {
+    Axios.post(`${urlServer}updateUserPassword`, {
       id: id,
       password: password
     });

@@ -6,6 +6,7 @@ import "../doctor-page.css"
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { urlServer } from "../App";
 
 function PatientPage() {
   const [user, setUser] = useState()
@@ -15,7 +16,7 @@ function PatientPage() {
   const id = params.id
   
   const getUserById = (id) => {
-    Axios.post("https://unilate-server-f22fc8c7c32c.herokuapp.com/getUserById", {
+    Axios.post(`${urlServer}getUserById`, {
     id: id,
     }).then((data) => {
     setUser(data.data[0])
