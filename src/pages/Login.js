@@ -67,12 +67,24 @@ function Login() {
                 {invalidCredentials && <label className="signup-label signup-label-red">{errorMessage}</label>}
                 </div>
                 <button className="login-button" onClick={submitConnect}>Se connecter</button>
+                <button className="create-arsene"> Continuer avec Gmail</button>
+                <button className="create-arsene-f"> Continuer avec Facebook</button>
+                
             </form>
-            <div className="create-account">
-                <label className="login-label">Pas encore de compte?</label>
-                <Link className="link" to="/signup"><button className="create-button">Créer un compte</button></Link>
-            </div>
         </div>
+        <div className="arsenetest">
+          <div className="right-form-a">
+                  <label className="login-label-a">Pas encore de compte?</label>
+                  <Link className="link" to="/signup"><button className="create-button-a">Créer un compte</button></Link>
+          </div>
+          <div className="right-form-b">
+                  <label className="login-label">Besoin d'aide ? </label>
+                  <button className="create-button">Mail</button>
+        </div>
+
+        </div>
+      
+        
     </div>
     </div>
   );

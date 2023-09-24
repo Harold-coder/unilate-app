@@ -125,17 +125,19 @@ nav{
 }
 .login-page{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
-.login-full-form, .signup-full-form{
+
+.right-form-a, .right-form-b{
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
+  justify-content: center;
   width: 60%;
-  max-width: 40rem;
-  height: 35rem;
+  max-width: 20rem;
+  height: 13.4rem;
   margin: 2rem;
   margin-top: 4rem;
   padding: 2rem;
@@ -143,6 +145,94 @@ nav{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
 }
+
+.right-form-a {
+  background-color: #5383FF;
+  border: 2px solid #5383FF;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.login-label-a{
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white
+}
+
+.create-button-a{
+  font-size: 1.1rem;
+width: 10rem;
+min-height: 2.5rem;
+cursor: pointer;
+color: #5383FF;
+background-color:white;
+border: 1px solid white;
+
+border-radius: 5px;
+margin-top: 2rem;
+transition-duration: 100ms;
+
+}
+
+
+.login-full-form, .signup-full-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 60%;
+  max-width: 20rem;
+  height: 35rem;
+  margin: 2rem;
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 2px solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.create-arsene {
+  font-size: 1.1rem;
+  width: 10rem;
+  min-height: 3.5rem;
+  cursor: pointer;
+  color: red;
+  background-color: white;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin-top: 2rem;
+  transition-duration: 100ms
+}
+
+.create-arsene-f {
+  font-size: 1.1rem;
+  width: 10rem;
+  min-height: 3.5rem;
+  cursor: pointer;
+  color: white;
+  background-color: #5383FF;
+  border: 1px solid #5383FF;
+  border-radius: 5px;
+  margin-top: 2rem;
+  transition-duration: 100ms
+
+}
+
+
+@media (max-width: 870px) {
+  .login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-form-a, .right-form-b {
+    width: 20rem;
+  }
+}
+
 .signup-full-form{
   height: 50rem;
 }
@@ -216,6 +306,16 @@ nav{
   transition-duration: 100ms
 
 }
+
+
+
+
+
+
+
+
+
+
 
 .login-button:hover, .signup-button:hover, .create-button:hover{
   border: 1px solid #2551bf;  
