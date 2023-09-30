@@ -15,10 +15,11 @@ function SignUp() {
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)
+  const [emailExists, setEmailExists] = useState(false)
 
   const navigate = useNavigate();
 
-  const createUser = (email, password, fullName, profession, city, gender) => {
+  function createUser (email, password, fullName, profession, city, gender) {
     Axios.post(`${urlServer}createUser`, {
       email: email,
       password: password,
@@ -26,7 +27,14 @@ function SignUp() {
       profession: profession,
       city: city,
       gender: gender
-    });
+    }).then((response) => {
+      if (response.data.affectedRows === 1){
+        navigate('/login');            // TODO: Make it navigate to the doctorPage immediately.
+      }
+      else{
+        setEmailExists(true);
+      }
+    })
   }
 
   function submitForm(event){
@@ -36,15 +44,15 @@ function SignUp() {
     } else if (!password || !confirmPassword || password !== confirmPassword || password.length < 3){
       setPasswordMatch(false);
     }
-    else {
+    else {  // Everything is good we can create the user
       createUser(email, password, fullName, profession, city, gender);
-      navigate('/login')
     }
   }
 
   useEffect(() => {
     setPasswordMatch(true);
     setValidFormat(true);
+    setEmailExists(false);
   }, [email, fullName, city, profession, gender, password, confirmPassword])
   return (
     <div>
@@ -83,7 +91,8 @@ function SignUp() {
                 <label className="signup-label">Confirmer le mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
                 {!passwordMatch && <label className="signup-label signup-label-red">Les mots de passe ne correspondent pas.</label>}
-                {!validFormat && <label className="signup-label signup-label-red">Certains champs n'ont pas été complétés.</label>}
+                {!validFormat && <label className="signup-label signup-label-red">Certains champs n'ont pas été complétés correctement.</label>}
+                {emailExists && <label className="signup-label signup-label-red">L'adresse email existe déjà.</label>}
                 </div>
                 <button className="signup-button" onClick={submitForm}>Créer le compte</button>
             </form>
