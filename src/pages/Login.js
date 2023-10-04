@@ -11,21 +11,27 @@ function Login() {
   const [invalidCredentials, setInvalidCredentials] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
 
-  // const [loginStatus, setLoginStatus] = useState(false)
+  const [loginStatus, setLoginStatus] = useState(false)
 
   Axios.defaults.withCredentials = true;
 
   const navigate = useNavigate();
 
+  const testCookies = () => {
+    Axios.get(`${urlServer}set-cookie`).then((response) => {
+      console.log(response);
+    })
+  }
+
   const confirmLogin = (email, password) => {
-    console.log("here")
     Axios.post(`${urlServer}confirmLogin`, {
       email: email,
       password: password
     }).then((data) => {
       var user = data.data
       if (user && user.length === 1){
-        navigate(`/doctorPage/${user[0].id}`)
+        // navigate(`/doctorPage/${user[0].id}`)
+        console.log("Vamos");
       }
       else{
         setErrorMessage(data.data)
@@ -43,13 +49,13 @@ function Login() {
     setInvalidCredentials(false)
   }, [email, password]);
 
-  // useEffect(() => {
-  //   Axios.get(`${urlServer}isLogin`).then((response) => {
-  //     if (response.data.loggedIn === true){
-  //       setLoginStatus(response.data.user[0].id)
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    Axios.get(`${urlServer}isLogin`).then((response) => {
+      if (response.data.loggedIn === true){
+        setLoginStatus(response.data.user[0].id)
+      }
+    })
+  }, [])
 
   return (
     <div>
@@ -79,7 +85,7 @@ function Login() {
           </div>
           <div className="right-form-b">
                   <label className="login-label">Besoin d'aide ? </label>
-                  <button className="create-button">Mail</button>
+                  <button className="create-button" onClick={() => {testCookies()}}>Mail</button>
         </div>
 
         </div>

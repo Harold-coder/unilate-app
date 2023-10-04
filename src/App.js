@@ -9,7 +9,7 @@ import ModifyProfile from "./pages/ModifyProfile";
 
 // export const urlServer = "http://localhost:3001/";
 // export const urlServer = "https://unilate-server-f22fc8c7c32c.herokuapp.com/";
-export const urlServer = "http://api.unilate.be/";
+export const urlServer = "https://api.unilate.be/";
 
 function App() {
   return (
