@@ -73,8 +73,8 @@ function Login() {
                 {invalidCredentials && <label className="signup-label signup-label-red">{errorMessage}</label>}
                 </div>
                 <button className="login-button" onClick={submitConnect}>Se connecter</button>
-                <button className="create-arsene"> Continuer avec Gmail</button>
-                <button className="create-arsene-f"> Continuer avec Facebook</button>
+                {/* <button className="create-arsene"> Continuer avec Gmail</button>
+                <button className="create-arsene-f"> Continuer avec Facebook</button> */}
                 
             </form>
         </div>
