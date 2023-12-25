@@ -11,6 +11,7 @@ function Login() {
   const [invalidCredentials, setInvalidCredentials] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
 
+
   // const [loginStatus, setLoginStatus] = useState(false)
 
   Axios.defaults.withCredentials = true;
@@ -30,8 +31,8 @@ function Login() {
     }).then((data) => {
       var user = data.data
       if (user && user.length === 1){
-        navigate(`/doctorPage/${user[0].id}`)
-        // console.log("Vamos");
+        // navigate(`/doctorPage/${user[0].id}`)
+        console.log("Vamos");
       }
       else{
         setErrorMessage(data.data)
@@ -67,6 +68,7 @@ function Login() {
                 <label className="login-label">Email</label>
                 <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
                 </div>
+
                 <div className="password-div">
                 <label className="login-label">Mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
