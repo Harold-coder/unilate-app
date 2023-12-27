@@ -9,34 +9,41 @@ import Axios from "axios";
 import { urlServer } from "../App";
 
 function PatientPage() {
-  const [user, setUser] = useState()
-  const [loaded, setLoaded] = useState()
-
-  const params = useParams()
-  const id = params.id
-  
-  const getUserById = (id) => {
-    Axios.post(`${urlServer}getUserById`, {
-    id: id,
-    }).then((data) => {
-    setUser(data.data[0])
-    setLoaded(true)
-    });
-  }
+  const [doctor, setDoctor] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
-      getUserById(id);
-  }, [id])
+    if (id) {
+      fetchDoctorById(id);
+    }
+  }, [id]);
+
+  const fetchDoctorById = async (doctorId) => {
+    try {
+      const response = await Axios.get(`${urlServer}doctors/${doctorId}`);
+      console.log(response.data.doctor)
+      setDoctor(response.data.doctor);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching doctor's data:", error);
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Or any other loading state representation
+  }
 
   return (
     <div className='patient-page'>
       <NavbarPatient/>
-      {loaded && 
+      {doctor && 
         <DoctorProfile
-        picture={user.gender.concat("-image.png")}
-        name={user.fullName}
-        city={user.city}
-        job={user.profession}
+        picture={"man-image.png"}
+        name={doctor.name}
+        city={doctor.city}
+        job={doctor.specialty}
         />
       }
       <DateTime/>
