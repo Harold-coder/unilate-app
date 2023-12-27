@@ -11,7 +11,7 @@ function SignUp() {
   const [fullName, setFullName] = useState()
   const [profession, setProfession] = useState()
   const [city, setCity] = useState()
-  const [gender, setGender] = useState("man")
+  const [phoneNumber, setPhoneNumber] = useState()
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)
@@ -19,24 +19,27 @@ function SignUp() {
 
   const navigate = useNavigate();
 
-  function createUser (email, password, fullName, profession, city, gender) {
-    Axios.post(`${urlServer}createUser`, {
-      email: email,
-      password: password,
-      fullName: fullName,
-      profession: profession,
+  const createUser = (email, password, fullName, profession, city, phoneNumber) => {
+    Axios.post(`${urlServer}doctors/register`, {
+      name: fullName,
+      specialty: profession,
       city: city,
-      gender: gender
+      email: email,
+      phone_number: phoneNumber,
+      hospital_name: 'None',
+      password: password,
     }).then((response) => {
-      if (response.data.affectedRows === 1){
-        navigate('/login');            // TODO: Make it navigate to the doctorPage immediately.
-      }
-      else{
+      if (response.data.message === 'New doctor registered') {
+        navigate('/login');     // TODO: Make it go to doctorPage instantly and add cookies. 
+      } else {
         setEmailExists(true);
       }
-    })
-  }
+    }).catch((error) => {
+      setEmailExists(true); // Consider more specific error handling
+    });
+  };
 
+  // TODO: Add a check for the phone number and re organise code using clean code rules
   function submitForm(event){
     event.preventDefault();
     if (!email || email.length < 5 || !fullName || fullName.length < 4 || !profession || profession.length < 2 || !city || city.length < 2){
@@ -45,7 +48,7 @@ function SignUp() {
       setPasswordMatch(false);
     }
     else {  // Everything is good we can create the user
-      createUser(email, password, fullName, profession, city, gender);
+      createUser(email, password, fullName, profession, city, phoneNumber);
     }
   }
 
@@ -53,7 +56,7 @@ function SignUp() {
     setPasswordMatch(true);
     setValidFormat(true);
     setEmailExists(false);
-  }, [email, fullName, city, profession, gender, password, confirmPassword])
+  }, [email, fullName, city, profession, password, confirmPassword])
   return (
     <div>
     <NavbarPatient/>
@@ -77,11 +80,8 @@ function SignUp() {
                 <input type="text" placeholder="Gynécologue" className="login-input" onChange={(e) => setProfession(e.target.value)}></input>
                 </div>
                 <div className="email-div">
-                <label className="signup-label">Genre</label>
-                <select className="dropdownGender" onChange={(e) => setGender(e.target.value)}>
-                        <option value="man">Homme</option>
-                        <option value="woman">Femme</option>
-                    </select>
+                <label className="signup-label">Numéro de telephone</label>
+                <input type="text" placeholder="+32..." className="login-input" onChange={(e) => setPhoneNumber(e.target.value)}></input>
                 </div>
                 <div className="password-div">
                 <label className="signup-label">Mot de passe</label>
