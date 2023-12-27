@@ -1,39 +1,46 @@
-import NavbarDoctor from "../components/DoctorPage/NavbarDoctor";
-import Retard from "../components/General/Retard";
-import DateTime from "../components/General/DateTime";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { useEffect, useState } from "react";
+import NavbarDoctor from "../components/DoctorPage/NavbarDoctor";
+import DateTime from "../components/General/DateTime";
+import Retard from "../components/General/Retard";
 import { urlServer } from "../App";
 
 function DoctorPage() {
-  const [user, setUser] = useState()
-  const [loaded, setLoaded] = useState(false)
-  const params = useParams()
-  const id = params.id
-
-  const getUserById = (id) => {
-    Axios.post(`${urlServer}getUserById`, {
-      id: id,
-    }).then((data) => {
-      setUser(data.data[0])
-      setLoaded(true)
-    });
-  }
+  const [doctor, setDoctor] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
-    getUserById(id);
-  }, [id])
+    if (id) {
+      fetchDoctorById(id);
+    }
+  }, [id]);
+
+  const fetchDoctorById = async (doctorId) => {
+    try {
+      const response = await Axios.get(`${urlServer}doctors/${doctorId}`);
+      setDoctor(response.data.doctor);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching doctor's data:", error);
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Or any other loading state representation
+  }
 
   return (
     <div className='doctor-page'>
-      {loaded && 
+      {doctor && (
         <div>
-          <NavbarDoctor picture={`${user.gender}-image.png`} id={id}/>
+          <NavbarDoctor picture="man-image.png" id={doctor.id} />
           <DateTime />
           <Retard page="doctor"/>
         </div>
-      }
+      )}
     </div>
   );
 }
