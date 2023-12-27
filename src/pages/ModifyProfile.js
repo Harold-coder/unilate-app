@@ -1,6 +1,7 @@
 import NavbarPatient from "../components/PatientPage/NavbarPatient";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import Axios from "axios";
 import { urlServer } from "../App";
 
@@ -12,69 +13,95 @@ function ModifyProfile() {
   const [fullName, setFullName] = useState()
   const [profession, setProfession] = useState()
   const [city, setCity] = useState()
-  const [gender, setGender] = useState("man")
 
   const [loaded, setLoaded] = useState(false)
 
   const [saved, setSaved] = useState(false)
   const [passwordMatch, setPasswordMatch] = useState(true)
 
-  const params = useParams()
-  const id = params.id
-
-  const getUserById = (id) => {
-    Axios.post(`${urlServer}getUserById`, {
-      id: id,
-    }).then((data) => {
-      const user = data.data[0]
-      setLoaded(true)
-      setEmail(user.email)
-      setFullName(user.fullName)
-      setCity(user.city)
-      setProfession(user.profession)
-      setGender(user.gender)
-    });
-  }
-
-  const updateUserInfo = (id, email, fullName, profession, city, gender) => {
-    Axios.post(`${urlServer}updateUserInfo`, {
-      id: id,
-      email: email,
-      fullName: fullName,
-      profession: profession,
-      city: city,
-      gender: gender
-    });
-    setSaved(true)
-  }
-
-  const updateUserPassord = (id, password) => {
-    Axios.post(`${urlServer}updateUserPassword`, {
-      id: id,
-      password: password
-    });
-    setSaved(true)
-  }
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    getUserById(id);
-  }, [id])
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.doctor_id && parseInt(decodedToken.doctor_id) === parseInt(id)) {
+        getUserById(id);
+      } else {
+        navigate('/login');
+      }
+    } else {
+      navigate('/login');
+    }
+  }, [id, navigate]);
+
+
+
+  const getUserById = async () => {
+    try {
+      const response = await Axios.get(`${urlServer}doctors/${id}`);
+      const doctor = response.data.doctor;
+      setLoaded(true);
+      setEmail(doctor.email);
+      setFullName(doctor.name);
+      setCity(doctor.city);
+      setProfession(doctor.specialty);
+      console.log(token);
+    } catch (error) {
+      console.error("Error fetching doctor's data:", error);
+    }
+  };
+
+  const updateDoctorInfo = async () => {
+    try {
+      const config = {
+        headers: { 'x-access-tokens': token }
+      };
+      await Axios.put(`${urlServer}doctors/${id}`, {
+        name: fullName,
+        specialty: profession,
+        city: city,
+        email: email
+      }, config);
+      // Update password if provided
+      if (password && password === confirmPassword) {
+        await updateDoctorPassword(id, password);
+      }
+      setSaved(true);
+    } catch (error) {
+      console.error("Error updating doctor's info:", error);
+    }
+  };
+
+  const updateDoctorPassword = async (doctorId, newPassword) => {
+    try {
+      const config = {
+        headers: { 'x-access-tokens': token }
+      };
+      await Axios.put(`${urlServer}doctors/update_password/${doctorId}`, {
+        password: newPassword
+      }, config);
+    } catch (error) {
+      console.error("Error updating password:", error);
+    }
+  };
+
+  function submitForm(event) {
+    event.preventDefault();
+    if (!password || password === confirmPassword) {
+      updateDoctorInfo();
+    } else {
+      setPasswordMatch(false);
+    }
+  }
 
   useEffect(() => {
     setPasswordMatch(true);
     setSaved(false);
-  }, [password, confirmPassword, email, fullName, profession, city, gender])
+  }, [password, confirmPassword, email, fullName, profession, city])
 
-
-  function submitForm(event){
-    event.preventDefault();
-    if (password && password === confirmPassword){
-      updateUserPassord(id, password);
-    } else if (password && password !== confirmPassword){
-      setPasswordMatch(false);
-    }
-    updateUserInfo(id, email, fullName, profession, city, gender);
-  }
   return (
     <div>
     <NavbarPatient/>
@@ -97,13 +124,6 @@ function ModifyProfile() {
                 <div className="email-div">
                 <label className="signup-label">Profession</label>
                 <input type="text" placeholder="Gynécologue" className="login-input" onChange={(e) => setProfession(e.target.value)} value={profession}></input>
-                </div>
-                <div className="email-div">
-                <label className="signup-label">Genre</label>
-                <select className="dropdownGender" onChange={(e) => setGender(e.target.value)} value={gender}>
-                        <option value="man">Homme</option>
-                        <option value="woman">Femme</option>
-                    </select>
                 </div>
                 <div className="password-div">
                 <label className="signup-label">Nouveau mot de passe</label>

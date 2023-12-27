@@ -10,6 +10,8 @@ export default function Retard(props) {
     const [patientHour, setPatientHour] = useState("0");
     const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
+
+    const token = localStorage.getItem('token');
     
     const delayToText = {
         0: "Pas de retard",
@@ -22,6 +24,8 @@ export default function Retard(props) {
     useEffect(() => {
         if (id) {
             fetchDoctorById(id);
+            fetchCurrentDelay(id);
+            console.log(delay)
         }
     }, [id]);
 
@@ -37,12 +41,29 @@ export default function Retard(props) {
         }
     };
 
+    const fetchCurrentDelay = async (doctorId) => {
+        try {
+            const response = await Axios.get(`${urlServer}delays/${doctorId}`);
+            const delayData = response.data;
+            console.log(response.data)
+            setDelay(delayData.delay_duration);
+            setEndDelay(delayData.end_timestamp); // Assuming this is how you store the end time of the delay
+            setLoaded(true);
+        } catch (error) {
+            console.error("Error fetching delay data:", error);
+        }
+    };
+
     const updateDelay = async () => {
         try {
+            const now = new Date().toISOString();
+            const config = {
+                headers: { 'x-access-tokens': token }
+              };
             await Axios.put(`${urlServer}delays/${id}`, {
-                delayDuration: delay,
-                endDelay: endDelay
-            });
+                delay_duration: delay,
+                end_timestamp: endDelay,
+            }, config);
             alert('Delay updated successfully!');
         } catch (error) {
             console.error("Error updating delay:", error);

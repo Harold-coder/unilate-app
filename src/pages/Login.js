@@ -22,9 +22,10 @@ function Login() {
       });
 
       if (response.data && response.data.token) {
-        // Assuming the token or user ID is returned upon successful login
+        // Store the token in localStorage
+        localStorage.setItem('token', response.data.token);
+        
         navigate(`/doctorPage/${response.data.doctor_id}`);
-        console.log(response.data);
       } else {
         setErrorMessage('Invalid credentials. Please try again.');
         setInvalidCredentials(true);

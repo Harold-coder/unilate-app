@@ -22,7 +22,6 @@ function PatientPage() {
   const fetchDoctorById = async (doctorId) => {
     try {
       const response = await Axios.get(`${urlServer}doctors/${doctorId}`);
-      console.log(response.data.doctor)
       setDoctor(response.data.doctor);
       setIsLoading(false);
     } catch (error) {
