@@ -10,7 +10,9 @@ import ModifyProfile from "./pages/ModifyProfile";
 // export const urlServer = "http://localhost:3001/";
 // export const urlServer = "https://unilate-server-f22fc8c7c32c.herokuapp.com/";
 // export const urlServer = "https://api.unilate.be/";
-export const urlServer = "http://10.50.2.238:8012/";
+
+// export const urlServer = "http://10.50.2.238:8012/";
+export const urlServer = "http://ec2-51-20-103-254.eu-north-1.compute.amazonaws.com:8012/";
 
 function App() {
   return (
