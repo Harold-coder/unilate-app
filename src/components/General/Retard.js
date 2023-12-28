@@ -4,6 +4,9 @@ import Axios from "axios";
 import { urlServer } from "../../App";
 
 export default function Retard(props) {
+    const date = new Date();
+    let hour = date.getHours();
+
     const [doctor, setDoctor] = useState(null);
     const [delay, setDelay] = useState(0);
     const [endDelay, setEndDelay] = useState(0);
@@ -25,7 +28,6 @@ export default function Retard(props) {
         if (id) {
             fetchDoctorById(id);
             fetchCurrentDelay(id);
-            console.log(delay)
         }
     }, [id]);
 
@@ -33,8 +35,6 @@ export default function Retard(props) {
         try {
             const response = await Axios.get(`${urlServer}doctors/${id}`);
             setDoctor(response.data.doctor);
-            setDelay(response.data.doctor.delayDuration);
-            setEndDelay(response.data.doctor.endDelay);
             setLoaded(true);
         } catch (error) {
             console.error("Error fetching doctor's data:", error);
@@ -45,24 +45,24 @@ export default function Retard(props) {
         try {
             const response = await Axios.get(`${urlServer}delays/${doctorId}`);
             const delayData = response.data;
-            console.log(response.data)
             setDelay(delayData.delay_duration);
-            setEndDelay(delayData.end_timestamp); // Assuming this is how you store the end time of the delay
+            setEndDelay(delayData.end_timestamp);
             setLoaded(true);
         } catch (error) {
             console.error("Error fetching delay data:", error);
         }
     };
-
+    
     const updateDelay = async () => {
         try {
-            const now = new Date().toISOString();
             const config = {
                 headers: { 'x-access-tokens': token }
-              };
+            };
             await Axios.put(`${urlServer}delays/${id}`, {
                 delay_duration: delay,
                 end_timestamp: endDelay,
+                start_timestamp: new Date().getHours(), // or any other logic to set the hour
+                announcement_timestamp: new Date().getHours() // same as above
             }, config);
             alert('Delay updated successfully!');
         } catch (error) {
@@ -73,8 +73,8 @@ export default function Retard(props) {
     const handlePatientAppointment = (e) => {
         const patientAppointment = parseInt(e.target.value);
         setPatientHour(patientAppointment);
-        if (patientAppointment <= doctor.endDelay) {
-            setDelay(doctor.delay);
+        if (patientAppointment <= endDelay) {
+            setDelay(delay);
         } else {
             setDelay(0);
         }
@@ -82,21 +82,23 @@ export default function Retard(props) {
     
     if (props.page === "doctor" && loaded) {
         return (
-            <div>
+             <div>
                 <div className="retard-doctor">
                     <p>Retard annoncé:</p>
                     <select className="dropdown" value={delay} onChange={(e) => setDelay(e.target.value)}>
                         <option value={delay}>{delayToText[delay]}</option>
-                        {Object.keys(delayToText).filter(d => d !== delay).map(d => (
-                            <option key={d} value={d}>{delayToText[d]}</option>
-                        ))}
+                        {delay !== 0 && <option value={0}>{delayToText[0]}</option>}
+                        {delay !== 15 && <option value={15}>{delayToText[15]}</option>}
+                        {delay !== 30 && <option value={30}>{delayToText[30]}</option>}
+                        {delay !== 45 && <option value={45}>{delayToText[45]}</option>}
+                        {delay !== 60 && <option value={60}>{delayToText[60]}</option>}
                     </select>
-                    <p>Jusqu'à:</p>
+                    <p>Jusqu'a:</p>
                     <select className="dropdown" value={endDelay} onChange={(e) => setEndDelay(e.target.value)}>
-                        <option value={endDelay}>{endDelay === 24 ? 'Toute la journée' : `${endDelay}h00`}</option>
-                        {Array.from({ length: 4 }, (_, i) => patientHour + i + 1).filter(h => h !== endDelay).map(h => (
-                            <option key={h} value={h}>{`${h}h00`}</option>
-                        ))}
+                        {(endDelay === 24 && <option value={endDelay}>Toute la journée</option>) || <option value={endDelay}>{endDelay}h00</option>}
+                        {endDelay !== hour+1 && <option value={hour+1}>{hour+1}h00</option>}
+                        {endDelay !== hour+2 && <option value={hour+2}>{hour+2}h00</option>}
+                        {endDelay !== hour+3 && <option value={hour+3}>{hour+3}h00</option>}
                     </select>
                     <button className="signup-button" onClick={updateDelay}>Enregistrer</button>
                 </div>
@@ -109,9 +111,10 @@ export default function Retard(props) {
                     <p>Heure de votre rendez-vous:</p>
                     <select className="dropdown" onChange={handlePatientAppointment}>
                         <option value="0"></option>
-                        {Array.from({ length: 4 }, (_, i) => patientHour + i).map(h => (
-                            <option key={h} value={h}>{`${h}h00`}</option>
-                        ))}
+                        <option value={hour}>{hour}h00</option>
+                        <option value={hour+1}>{hour+1}h00</option>
+                        <option value={hour+2}>{hour+2}h00</option>
+                        <option value={hour+3}>{hour+3}h00</option>
                     </select>
                 </div>
                 {patientHour !== "0" && (
