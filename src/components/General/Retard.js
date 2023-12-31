@@ -7,9 +7,9 @@ export default function Retard(props) {
     const date = new Date();
     let hour = date.getHours();
 
-    const [doctor, setDoctor] = useState(null);
     const [delay, setDelay] = useState(0);
     const [endDelay, setEndDelay] = useState(0);
+    const [updated, setUpdated] = useState(false);
     const [patientHour, setPatientHour] = useState("0");
     const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
@@ -26,20 +26,9 @@ export default function Retard(props) {
 
     useEffect(() => {
         if (id) {
-            fetchDoctorById(id);
             fetchCurrentDelay(id);
         }
     }, [id]);
-
-    const fetchDoctorById = async () => {
-        try {
-            const response = await Axios.get(`${urlServer}doctors/${id}`);
-            setDoctor(response.data.doctor);
-            setLoaded(true);
-        } catch (error) {
-            console.error("Error fetching doctor's data:", error);
-        }
-    };
 
     const fetchCurrentDelay = async (doctorId) => {
         try {
@@ -64,7 +53,7 @@ export default function Retard(props) {
                 start_timestamp: new Date().getHours(), // or any other logic to set the hour
                 announcement_timestamp: new Date().getHours() // same as above
             }, config);
-            alert('Delay updated successfully!');
+            setUpdated(true);
         } catch (error) {
             console.error("Error updating delay:", error);
         }
@@ -87,20 +76,22 @@ export default function Retard(props) {
                     <p>Retard annoncé:</p>
                     <select className="dropdown" value={delay} onChange={(e) => setDelay(e.target.value)}>
                         <option value={delay}>{delayToText[delay]}</option>
-                        {delay !== 0 && <option value={0}>{delayToText[0]}</option>}
-                        {delay !== 15 && <option value={15}>{delayToText[15]}</option>}
-                        {delay !== 30 && <option value={30}>{delayToText[30]}</option>}
-                        {delay !== 45 && <option value={45}>{delayToText[45]}</option>}
-                        {delay !== 60 && <option value={60}>{delayToText[60]}</option>}
+                        {parseInt(delay) !== 0 && <option value={0}>{delayToText[0]}</option>}
+                        {parseInt(delay) !== 15 && <option value={15}>{delayToText[15]}</option>}
+                        {parseInt(delay) !== 30 && <option value={30}>{delayToText[30]}</option>}
+                        {parseInt(delay) !== 45 && <option value={45}>{delayToText[45]}</option>}
+                        {parseInt(delay) !== 60 && <option value={60}>{delayToText[60]}</option>}
                     </select>
                     <p>Jusqu'a:</p>
                     <select className="dropdown" value={endDelay} onChange={(e) => setEndDelay(e.target.value)}>
-                        {(endDelay === 24 && <option value={endDelay}>Toute la journée</option>) || <option value={endDelay}>{endDelay}h00</option>}
-                        {endDelay !== hour+1 && <option value={hour+1}>{hour+1}h00</option>}
-                        {endDelay !== hour+2 && <option value={hour+2}>{hour+2}h00</option>}
-                        {endDelay !== hour+3 && <option value={hour+3}>{hour+3}h00</option>}
+                        {(parseInt(endDelay) === 24 && <option value={endDelay}>Toute la journée</option>) || <option value={endDelay}>{endDelay}h00</option>}
+                        {parseInt(endDelay) !== hour+1 && <option value={hour+1}>{hour+1}h00</option>}
+                        {parseInt(endDelay) !== hour+2 && <option value={hour+2}>{hour+2}h00</option>}
+                        {parseInt(endDelay) !== hour+3 && <option value={hour+3}>{hour+3}h00</option>}
+                        {parseInt(endDelay) !== 24 && <option value={24}>Toute la journée</option>}
                     </select>
                     <button className="signup-button" onClick={updateDelay}>Enregistrer</button>
+                    {updated && <label className="signup-label">Votre retard a été mis à jour!</label>}
                 </div>
             </div>
         );
