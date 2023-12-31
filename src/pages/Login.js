@@ -13,8 +13,25 @@ function Login() {
 
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
+
   const submitConnect = async (event) => {
     event.preventDefault();
+
+    if (!validateEmail(email)) {
+      setErrorMessage('Veuillez entrer une addresse email valide.');
+      setInvalidCredentials(true);
+      return;
+    }
+
+    if (!password) {
+      setErrorMessage('Le mot de passe ne peut pas être vide.');
+      setInvalidCredentials(true);
+      return;
+    }
 
     try {
       setLoading(true);
@@ -30,11 +47,11 @@ function Login() {
         navigate(`/doctorPage/${response.data.doctor_id}`);
       } else {
         setLoading(false);
-        setErrorMessage('Invalid credentials. Please try again.');
+        setErrorMessage('Email ou mot de passe invalide.');
         setInvalidCredentials(true);
       }
     } catch (error) {
-      setErrorMessage(error.response?.data?.message || 'An error occurred. Please try again.');
+      setErrorMessage(error.response?.data?.message || 'Une erreur est survenue, veuillez réessayer.');
       setInvalidCredentials(true);
     }
   };
