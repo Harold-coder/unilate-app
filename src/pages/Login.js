@@ -9,6 +9,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ function Login() {
     event.preventDefault();
 
     try {
+      setLoading(true);
       const response = await Axios.post(`${urlServer}doctors/login`, {
         email: email,
         password: password
@@ -27,6 +29,7 @@ function Login() {
         
         navigate(`/doctorPage/${response.data.doctor_id}`);
       } else {
+        setLoading(false);
         setErrorMessage('Invalid credentials. Please try again.');
         setInvalidCredentials(true);
       }
@@ -39,34 +42,38 @@ function Login() {
   return (
     <div>
       <NavbarPatient />
-      <div className='login-page'>
-        <div className="login-full-form">
-          <form className="login-form" onSubmit={submitConnect}>
-            <div className="email-div">
-              <label className="login-label">Email</label>
-              <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
-            </div>
+      {loading && <div className="loading">Validation en cours...</div>}
 
-            <div className="password-div">
-              <label className="login-label">Mot de passe</label>
-              <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
-              {invalidCredentials && <label className="signup-label signup-label-red">{errorMessage}</label>}
-            </div>
-            <button type="submit" className="login-button">Se connecter</button>
-          </form>
-        </div>
+      {!loading && 
+        <div className='login-page'>
+          <div className="login-full-form">
+            <form className="login-form" onSubmit={submitConnect}>
+              <div className="email-div">
+                <label className="login-label">Email</label>
+                <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
+              </div>
 
-        <div className="arsenetest">
-          <div className="right-form-a">
-            <label className="login-label-a">Pas encore de compte?</label>
-            <Link className="link" to="/signup"><button className="create-button-a">Créer un compte</button></Link>
+              <div className="password-div">
+                <label className="login-label">Mot de passe</label>
+                <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
+                {invalidCredentials && <label className="signup-label signup-label-red">{errorMessage}</label>}
+              </div>
+              <button type="submit" className="login-button">Se connecter</button>
+            </form>
           </div>
-          <div className="right-form-b">
-            <label className="login-label">Besoin d'aide ? </label>
-            <button className="create-button">Mail</button>
+
+          <div className="arsenetest">
+            <div className="right-form-a">
+              <label className="login-label-a">Pas encore de compte?</label>
+              <Link className="link" to="/signup"><button className="create-button-a">Créer un compte</button></Link>
+            </div>
+            <div className="right-form-b">
+              <label className="login-label">Besoin d'aide ? </label>
+              <button className="create-button">Mail</button>
+            </div>
           </div>
         </div>
-      </div>
+      }
     </div>
   );
 }

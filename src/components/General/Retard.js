@@ -117,6 +117,6 @@ export default function Retard(props) {
             </div>
         );
     }  else {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 }

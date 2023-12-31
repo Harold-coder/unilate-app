@@ -58,6 +58,8 @@ body {
     max-width: 35rem;
     padding-bottom: 3rem;
 }
+
+
 .dropdown{
     text-align: center;
     font-size: 1.3rem;
@@ -85,7 +87,6 @@ body {
     appearance: none;
     cursor: pointer;
 }
-
 
 
 .retard-patient{
@@ -122,4 +123,23 @@ body {
 .retard-save {
     text-align: center;
     padding-top: 2rem;
+}
+
+.loading {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+
+/* Logout Button Style */
+.logout-button {
+    color: white;
+    /* background-color: #ff4d4d; Red color for logout to indicate action */
+    border: none;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-bottom: 0.75rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
 }
