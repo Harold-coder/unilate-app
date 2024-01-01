@@ -9,13 +9,34 @@ function Login() {
   const [password, setPassword] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+
+  Axios.defaults.withCredentials = true;
+
 
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
+  };
+
+  const fetchDoctorIdAndRedirect = async () => {
+    try {
+      // Assuming you have an endpoint like `/doctors/me` that uses the token to identify the doctor
+      const response = await Axios.get(`${urlServer}doctors/me`, {
+        withCredentials: true // if you're using cookies
+      });
+
+      if (response.status === 200 && response.data.doctor_id) {
+        navigate(`/doctorPage/${response.data.doctor_id}`);
+      } else {
+        // Handle any error or unexpected response
+        console.error('Failed to get doctor id');
+      }
+    } catch (error) {
+      console.error('Error fetching doctor id:', error);
+    }
   };
 
   const submitConnect = async (event) => {
@@ -38,13 +59,12 @@ function Login() {
       const response = await Axios.post(`${urlServer}doctors/login`, {
         email: email,
         password: password
-      });
+      }, { withCredentials: true });
 
-      if (response.data && response.data.token) {
-        // Store the token in localStorage
-        localStorage.setItem('token', response.data.token);
-        
-        navigate(`/doctorPage/${response.data.doctor_id}`);
+      if (response.status === 200) {
+        // Call the function to fetch the doctor_id and redirect
+        console.log(response);
+        fetchDoctorIdAndRedirect();
       } else {
         setLoading(false);
         setErrorMessage('Email ou mot de passe invalide.');
@@ -67,12 +87,12 @@ function Login() {
             <form className="login-form" onSubmit={submitConnect}>
               <div className="email-div">
                 <label className="login-label">Email</label>
-                <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
+                <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)} />
               </div>
 
               <div className="password-div">
                 <label className="login-label">Mot de passe</label>
-                <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
+                <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)} />
                 {invalidCredentials && <label className="signup-label signup-label-red">{errorMessage}</label>}
               </div>
               <button type="submit" className="login-button">Se connecter</button>
