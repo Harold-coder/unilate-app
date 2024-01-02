@@ -28,6 +28,8 @@ function Login() {
         withCredentials: true // if you're using cookies
       });
 
+      console.log(response);
+      console.log(response.data.doctor_id);
       if (response.status === 200 && response.data.doctor_id) {
         navigate(`/doctorPage/${response.data.doctor_id}`);
       } else {
@@ -63,7 +65,7 @@ function Login() {
 
       if (response.status === 200) {
         // Call the function to fetch the doctor_id and redirect
-        console.log(response);
+        console.log("Login successful, let's move on.");
         fetchDoctorIdAndRedirect();
       } else {
         setLoading(false);
