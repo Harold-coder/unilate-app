@@ -28,10 +28,8 @@ function Login() {
         withCredentials: true // if you're using cookies
       });
 
-      console.log(response);
-      console.log(response.data.doctor_id);
-      if (response.status === 200 && response.data.doctor_id) {
-        navigate(`/doctorPage/${response.data.doctor_id}`);
+      if (response.status === 200 && response.data.doctor.doctor_id) {
+        navigate(`/doctorPage/${response.data.doctor.doctor_id}`);
       } else {
         // Handle any error or unexpected response
         console.error('Failed to get doctor id');
