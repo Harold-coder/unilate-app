@@ -19,7 +19,7 @@ function DoctorPage() {
     const fetchDoctorById = async () => {
       try {
         // The token is now managed by the browser cookies
-        const response = await Axios.get(`${urlServer}doctors/private/${id}`);
+        const response = await Axios.get(`${urlServer}doctors/me`);
         setDoctor(response.data.doctor);
         setIsLoading(false);
       } catch (error) {
