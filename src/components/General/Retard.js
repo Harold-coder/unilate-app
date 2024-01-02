@@ -14,6 +14,9 @@ export default function Retard(props) {
     const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
 
+    // Axios defaults for all requests
+    Axios.defaults.withCredentials = true;
+
     const token = localStorage.getItem('token');
     
     const delayToText = {
@@ -41,21 +44,19 @@ export default function Retard(props) {
             console.error("Error fetching delay data:", error);
         }
     };
-    
+
     const updateDelay = async () => {
         try {
-            const config = {
-                headers: { 'x-access-tokens': token }
-            };
-            await Axios.put(`${urlServer}delays/${id}`, {
-                delay_duration: delay,
-                end_timestamp: endDelay,
-                start_timestamp: new Date().getHours(), // or any other logic to set the hour
-                announcement_timestamp: new Date().getHours() // same as above
-            }, config);
-            setUpdated(true);
+          // Since we're using cookies, no need to send the token in headers
+          await Axios.put(`${urlServer}delays/${id}`, {
+            delay_duration: delay,
+            end_timestamp: endDelay,
+            start_timestamp: new Date().getHours(), // or any other logic to set the hour
+            announcement_timestamp: new Date().getHours() // same as above
+          });
+          setUpdated(true);
         } catch (error) {
-            console.error("Error updating delay:", error);
+          console.error("Error updating delay:", error);
         }
     };
 
