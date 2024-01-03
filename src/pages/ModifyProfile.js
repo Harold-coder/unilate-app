@@ -38,7 +38,7 @@ function ModifyProfile() {
       } else {
         // User is not authenticated or does not have access
         console.log("DENIED");
-        console/log(response);
+        console.log(response);
         // navigate('/login');
       }
     } catch (error) {
