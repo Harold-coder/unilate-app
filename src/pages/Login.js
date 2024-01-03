@@ -54,8 +54,8 @@ function Login() {
       return;
     }
 
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await Axios.post(`${urlServer}doctors/login`, {
         email: email,
         password: password
@@ -66,11 +66,10 @@ function Login() {
         console.log("Login successful, let's move on.");
         fetchDoctorIdAndRedirect();
       } else {
-        setLoading(false);
-        setErrorMessage('Email ou mot de passe invalide.');
-        setInvalidCredentials(true);
+        throw new Error('Unauthorized'); // This will be caught by the catch block below
       }
     } catch (error) {
+      setLoading(false); // Stop loading when an error occurs
       setErrorMessage(error.response?.data?.message || 'Une erreur est survenue, veuillez réessayer.');
       setInvalidCredentials(true);
     }
