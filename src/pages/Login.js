@@ -70,7 +70,7 @@ function Login() {
       }
     } catch (error) {
       setLoading(false); // Stop loading when an error occurs
-      setErrorMessage(error.response?.data?.message || 'Une erreur est survenue, veuillez réessayer.');
+      setErrorMessage('Une erreur est survenue, veuillez réessayer.');
       setInvalidCredentials(true);
     }
   };
