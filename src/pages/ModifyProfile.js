@@ -31,21 +31,11 @@ function ModifyProfile() {
     try {
       const response = await Axios.get(`${urlServer}doctors/me`, { withCredentials: true });
       if (response.status === 200 && response.data.doctor.doctor_id === parseInt(id)) {
-        console.log("MADE IT");
-        console.log(response);
         // User is authenticated and has access to this profile
         getUserById(id);
       } else {
         // User is not authenticated or does not have access
-        console.log("DENIED");
-        console.log(response);
-        console.log(response.data);
-        console.log(response.data.doctor);
-        console.log(response.status);
-        console.log(parseInt(id));
-        console.log(response.data.doctor_id === parseInt(id))
-        console.log("END");
-        // navigate('/login');
+        navigate('/login');
       }
     } catch (error) {
       console.error("Error verifying user's authentication:", error);

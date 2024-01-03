@@ -41,7 +41,7 @@ function DoctorPage() {
     <div className='doctor-page'>
       {doctor && (
         <div>
-          <NavbarDoctor picture="man-image.png" id={doctor.id} />
+          <NavbarDoctor picture="man-image.png" id={doctor.doctor_id} />
           <DateTime />
           <Retard page="doctor"/>
         </div>
