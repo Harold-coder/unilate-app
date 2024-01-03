@@ -30,12 +30,16 @@ function ModifyProfile() {
   const fetchCurrentDoctorAndVerify = async () => {
     try {
       const response = await Axios.get(`${urlServer}doctors/me`, { withCredentials: true });
-      if (response.status === 200 && response.data.doctor.doctor_id === parseInt(id)) {
+      if (response.data.doctor.doctor_id === parseInt(id)) {
+        console.log("MADE IT");
+        console.log(response);
         // User is authenticated and has access to this profile
         getUserById(id);
       } else {
         // User is not authenticated or does not have access
-        navigate('/login');
+        console.log("DENIED");
+        console/log(response);
+        // navigate('/login');
       }
     } catch (error) {
       console.error("Error verifying user's authentication:", error);
