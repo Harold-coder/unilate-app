@@ -13,10 +13,7 @@ export default function NavbarHome() {
                 if (response.status === 200 && response.data.doctor.doctor_id) {
                     setDoctorId(response.data.doctor.doctor_id);
                 }
-            })
-            .catch(error => {
-                console.error("Error fetching doctor's data:", error);
-                navigate('/login');
+                // if not then we don't set doctorId
             });
     }, [navigate]);
 

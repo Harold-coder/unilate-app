@@ -21,22 +21,27 @@ function ModifyProfile() {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      if (decodedToken.doctor_id && parseInt(decodedToken.doctor_id) === parseInt(id)) {
-        getUserById(id);
-      } else {
-        navigate('/login');
-      }
-    } else {
-      navigate('/login');
-    }
+    // Call the `/doctors/me` endpoint to verify if the user is authenticated
+    fetchCurrentDoctorAndVerify();
   }, [id, navigate]);
 
+  const fetchCurrentDoctorAndVerify = async () => {
+    try {
+      const response = await Axios.get(`${urlServer}doctors/me`, { withCredentials: true });
+      if (response.status === 200 && response.data.doctor.doctor_id === parseInt(id)) {
+        // User is authenticated and has access to this profile
+        getUserById(id);
+      } else {
+        // User is not authenticated or does not have access
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error("Error verifying user's authentication:", error);
+      navigate('/login');
+    }
+  };
 
 
   const getUserById = async () => {
@@ -56,33 +61,30 @@ function ModifyProfile() {
 
   const updateDoctorInfo = async () => {
     try {
-      const config = {
-        headers: { 'x-access-tokens': token }
-      };
+      // Update the doctor's basic info
       await Axios.put(`${urlServer}doctors/${id}`, {
         name: fullName,
         specialty: profession,
         city: city,
         email: email
-      }, config);
-      // Update password if provided
+      }, { withCredentials: true });
+  
+      // Update the password if provided
       if (password && password === confirmPassword) {
         await updateDoctorPassword(id, password);
       }
+  
       setSaved(true);
     } catch (error) {
       console.error("Error updating doctor's info:", error);
     }
   };
-
+  
   const updateDoctorPassword = async (doctorId, newPassword) => {
     try {
-      const config = {
-        headers: { 'x-access-tokens': token }
-      };
       await Axios.put(`${urlServer}doctors/update_password/${doctorId}`, {
         password: newPassword
-      }, config);
+      }, { withCredentials: true });
     } catch (error) {
       console.error("Error updating password:", error);
     }
