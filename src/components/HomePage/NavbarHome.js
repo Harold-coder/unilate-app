@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { urlServer } from "../App"; // Assuming this is your server's URL
+import { urlServer } from "../../App"; // Assuming this is your server's URL
 
 export default function NavbarHome() {
     const navigate = useNavigate();
