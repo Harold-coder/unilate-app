@@ -1,28 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import Axios from "axios";
+import { urlServer } from "../App"; // Assuming this is your server's URL
 
 export default function NavbarHome() {
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
-    let doctorId;
+    const [doctorId, setDoctorId] = useState(null);
 
-    // Check if the user is logged in by decoding the token
-    if (token) {
-        try {
-            const decodedToken = jwtDecode(token);
-            doctorId = decodedToken.doctor_id;
-            // Check if the token has expired
-            const current_time = Date.now() / 1000;
-            if (decodedToken.exp < current_time) {
-                // Token has expired, navigate to login
+    useEffect(() => {
+        Axios.get(`${urlServer}doctors/me`, { withCredentials: true })
+            .then(response => {
+                if (response.status === 200 && response.data.doctor.doctor_id) {
+                    setDoctorId(response.data.doctor.doctor_id);
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching doctor's data:", error);
                 navigate('/login');
-            }
-        } catch (error) {
-            console.error("Error decoding token:", error);
-            navigate('/login');
-        }
-    }
+            });
+    }, [navigate]);
 
     return (
         <nav>

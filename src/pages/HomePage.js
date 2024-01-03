@@ -8,7 +8,7 @@ function HomePage() {
     <div className='home-page'>
         <NavbarHome />
         <h1 className="hero"><b id="first-letter">U</b>nilate</h1>
-      <Search/>
+        <Search/>
     </div>
   );
 }
