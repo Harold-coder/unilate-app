@@ -53,7 +53,6 @@ function ModifyProfile() {
       setFullName(doctor.name);
       setCity(doctor.city);
       setProfession(doctor.specialty);
-      console.log(token);
     } catch (error) {
       console.error("Error fetching doctor's data:", error);
     }
