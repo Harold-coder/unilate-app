@@ -16,7 +16,7 @@ export default function NavbarHome() {
                 }
                 // if not authorized or any other error, we silently fail and don't set doctorId
             } catch (error) {
-                // Handle errors if needed, without logging them
+                console.log("You are not logged in.");
             }
         };
 
