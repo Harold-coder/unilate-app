@@ -8,13 +8,19 @@ export default function NavbarHome() {
     const [doctorId, setDoctorId] = useState(null);
 
     useEffect(() => {
-        Axios.get(`${urlServer}doctors/me`, { withCredentials: true })
-            .then(response => {
+        const fetchDoctor = async () => {
+            try {
+                const response = await Axios.get(`${urlServer}doctors/me`, { withCredentials: true });
                 if (response.status === 200 && response.data.doctor.doctor_id) {
                     setDoctorId(response.data.doctor.doctor_id);
                 }
-                // if not then we don't set doctorId
-            });
+                // if not authorized or any other error, we silently fail and don't set doctorId
+            } catch (error) {
+                // Handle errors if needed, without logging them
+            }
+        };
+
+        fetchDoctor();
     }, [navigate]);
 
     return (
