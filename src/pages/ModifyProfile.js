@@ -41,7 +41,13 @@ function ModifyProfile() {
       const response = await Axios.get(`${urlServer}doctors/me`, { withCredentials: true });
       if (response.status === 200 && response.data.doctor.doctor_id === parseInt(id)) {
         // User is authenticated and has access to this profile
-        getUserById(id);
+        const doctor = response.data.doctor;
+        setLoaded(true);
+        setEmail(doctor.email);
+        setFullName(doctor.name);
+        setCity(doctor.city);
+        setProfession(doctor.specialty);
+        setPicture(doctor.picture);
       } else {
         // User is not authenticated or does not have access
         navigate('/login');
@@ -52,21 +58,6 @@ function ModifyProfile() {
     }
   };
 
-
-  const getUserById = async () => {
-    try {
-      const response = await Axios.get(`${urlServer}doctors/${id}`);
-      const doctor = response.data.doctor;
-      setLoaded(true);
-      setEmail(doctor.email);
-      setFullName(doctor.name);
-      setCity(doctor.city);
-      setProfession(doctor.specialty);
-    } catch (error) {
-      console.error("Error fetching doctor's data:", error);
-    }
-  };
-
   const updateDoctorInfo = async () => {
     try {
       // Update the doctor's basic info
@@ -74,7 +65,8 @@ function ModifyProfile() {
         name: fullName,
         specialty: profession,
         city: city,
-        email: email
+        email: email,
+        picture: picture
       }, { withCredentials: true });
   
       // Update the password if provided
@@ -164,7 +156,6 @@ function ModifyProfile() {
                 </div>
 
                 <div className="avatar-selector">
-                  {/* <button className="avatar-button" type="button" onClick={openAvatarModal}>Choose Avatar</button> */}
                   <img 
                     onClick={openAvatarModal}
                     src={require(`../images/${picture}.png`)} 
@@ -174,7 +165,7 @@ function ModifyProfile() {
                 </div>
                 {isAvatarModalOpen && <AvatarModal />}
 
-                
+
                 <div className="password-div">
                 <label className="signup-label">Nouveau mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
