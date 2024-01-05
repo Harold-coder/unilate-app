@@ -15,7 +15,7 @@ import ModifyProfile from "./pages/ModifyProfile";
 // export const urlServer = "http://ec2-51-20-103-254.eu-north-1.compute.amazonaws.com:8012/";
 export const urlServer = "https://hhd09d017j.execute-api.eu-north-1.amazonaws.com/dev/";
 
-export const localDev = true;
+export const localDev = false;
 
 export const mockDoctor = {
   'doctor_id': 888,
