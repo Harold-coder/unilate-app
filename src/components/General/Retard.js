@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { urlServer } from "../../App";
+import { localDev, urlServer } from "../../App";
 
 export default function Retard(props) {
     const date = new Date();
@@ -29,7 +29,13 @@ export default function Retard(props) {
 
     useEffect(() => {
         if (id) {
-            fetchCurrentDelay(id);
+            if (localDev) {
+                setDelay(30);
+                setEndDelay(date.getHours()+2);
+                setLoaded(true);
+            } else{
+                fetchCurrentDelay(id);
+            }
         }
     }, [id]);
 
@@ -46,6 +52,10 @@ export default function Retard(props) {
     };
 
     const updateDelay = async () => {
+        if (localDev) {
+            console.log("Bypassing cookies because we are in local. The db was not updated since we are using mock data.")
+            return
+        }
         try {
           // Since we're using cookies, no need to send the token in headers
           await Axios.put(`${urlServer}delays/${id}`, {
@@ -74,6 +84,7 @@ export default function Retard(props) {
         return (
              <div>
                 <div className="retard-doctor">
+                    {localDev && <p>We are testing locally, we are using Mock values for the doctor in order to bypass cookies.</p>}
                     <p>Retard annoncé:</p>
                     <select className="dropdown" value={delay} onChange={(e) => setDelay(e.target.value)}>
                         <option value={delay}>{delayToText[delay]}</option>
@@ -86,9 +97,9 @@ export default function Retard(props) {
                     <p>Jusqu'a:</p>
                     <select className="dropdown" value={endDelay} onChange={(e) => setEndDelay(e.target.value)}>
                         {(parseInt(endDelay) === 24 && <option value={endDelay}>Toute la journée</option>) || <option value={endDelay}>{endDelay}h00</option>}
-                        {parseInt(endDelay) !== hour+1 && <option value={hour+1}>{hour+1}h00</option>}
-                        {parseInt(endDelay) !== hour+2 && <option value={hour+2}>{hour+2}h00</option>}
-                        {parseInt(endDelay) !== hour+3 && <option value={hour+3}>{hour+3}h00</option>}
+                        {parseInt(endDelay) !== (hour+1)%24 && <option value={(hour+1)%24}>{(hour+1)%24}h00</option>}
+                        {parseInt(endDelay) !== (hour+2)%24 && <option value={(hour+2)%24}>{(hour+2)%24}h00</option>}
+                        {parseInt(endDelay) !== (hour+3)%24 && <option value={(hour+3)%24}>{(hour+3)%24}h00</option>}
                         {parseInt(endDelay) !== 24 && <option value={24}>Toute la journée</option>}
                     </select>
                     <button className="signup-button" onClick={updateDelay}>Enregistrer</button>
@@ -104,9 +115,9 @@ export default function Retard(props) {
                     <select className="dropdown" onChange={handlePatientAppointment}>
                         <option value="0"></option>
                         <option value={hour}>{hour}h00</option>
-                        <option value={hour+1}>{hour+1}h00</option>
-                        <option value={hour+2}>{hour+2}h00</option>
-                        <option value={hour+3}>{hour+3}h00</option>
+                        <option value={(hour+1)%24}>{(hour+1)%24}h00</option>
+                        <option value={(hour+2)%24}>{(hour+2)%24}h00</option>
+                        <option value={(hour+3)%24}>{(hour+3)%24}h00</option>
                     </select>
                 </div>
                 {patientHour !== "0" && (

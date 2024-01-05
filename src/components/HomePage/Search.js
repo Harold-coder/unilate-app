@@ -63,7 +63,7 @@ export default function Search() {
             <Card 
                 key={doctor.id}
                 id={doctor.id}
-                picture="man-image.png"
+                picture={doctor.picture+".png"}
                 name={doctor.name}
                 city={doctor.city}
                 specialty={capitalizeFirstLetter(doctor.specialty)}

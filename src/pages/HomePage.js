@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Search from '../components/HomePage/Search';
 import React from 'react';
 import NavbarHome from '../components/HomePage/NavbarHome';

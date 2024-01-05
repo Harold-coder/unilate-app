@@ -1,7 +1,6 @@
 import NavbarPatient from "../components/PatientPage/NavbarPatient";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import Axios from "axios";
 import { urlServer } from "../App";
 

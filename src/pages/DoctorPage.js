@@ -4,7 +4,7 @@ import Axios from "axios";
 import NavbarDoctor from "../components/DoctorPage/NavbarDoctor";
 import DateTime from "../components/General/DateTime";
 import Retard from "../components/General/Retard";
-import { urlServer } from "../App";
+import { localDev, mockDoctor, urlServer } from "../App";
 
 function DoctorPage() {
   const [doctor, setDoctor] = useState(null);
@@ -29,7 +29,12 @@ function DoctorPage() {
     };
 
     if (id) {
-      fetchDoctorById();
+      if (localDev) {
+        setDoctor(mockDoctor);
+        setIsLoading(false);
+      } else {
+        fetchDoctorById();
+      }
     }
   }, [id, navigate]);
 
@@ -41,7 +46,8 @@ function DoctorPage() {
     <div className='doctor-page'>
       {doctor && (
         <div>
-          <NavbarDoctor picture="man-image.png" id={doctor.doctor_id} />
+          <NavbarDoctor picture={doctor.picture+".png"} id={doctor.doctor_id} />
+          {localDev && <p>We are testing locally, we are using Mock values for the doctor in order to bypass cookies.</p>}
           <DateTime />
           <Retard page="doctor"/>
         </div>

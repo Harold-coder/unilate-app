@@ -78,7 +78,9 @@ function Login() {
   return (
     <div>
       <NavbarPatient />
-      {loading && <div className="loading">Validation en cours...</div>}
+      {loading && 
+        <div className="loading">Validation en cours...</div>
+      }
 
       {!loading && 
         <div className='login-page'>

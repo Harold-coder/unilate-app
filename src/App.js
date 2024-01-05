@@ -15,6 +15,19 @@ import ModifyProfile from "./pages/ModifyProfile";
 // export const urlServer = "http://ec2-51-20-103-254.eu-north-1.compute.amazonaws.com:8012/";
 export const urlServer = "https://hhd09d017j.execute-api.eu-north-1.amazonaws.com/dev/";
 
+export const localDev = true;
+
+export const mockDoctor = {
+  'doctor_id': 888,
+  'name': 'Test Doctor',
+  'specialty': 'Testor',
+  'city': 'Test City',
+  'email': 'test@email.com',
+  'phone_number': '839208321',
+  'hospital_name': 'Test Hospital',
+  'picture': 'man-white-blond'
+};
+
 function App() {
   return (
     <div>
