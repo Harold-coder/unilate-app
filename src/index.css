@@ -253,6 +253,21 @@ transition-duration: 100ms;
   cursor: pointer;
 }
 
+.delete-account-button {
+  font-size: 1.1rem;
+  width: 10rem;
+  min-height: 2.5rem;
+  cursor: pointer;
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  transition-duration: 100ms
+}
+
+
 
 .create-arsene {
   font-size: 1.1rem;

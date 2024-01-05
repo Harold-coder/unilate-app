@@ -117,6 +117,20 @@ function ModifyProfile() {
     </div>
   );
 
+  const handleDeleteAccount = async () => {
+    if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+        try {
+            const response = await Axios.delete(`${urlServer}doctors/delete/${id}`, { withCredentials: true });
+            if (response.status === 200) {
+                // Perform any additional cleanup or redirection here
+                navigate('/login');
+            }
+        } catch (error) {
+            console.error("Error deleting account:", error);
+        }
+    }
+  };
+
   function submitForm(event) {
     event.preventDefault();
     if (!password || password === confirmPassword) {
@@ -178,6 +192,13 @@ function ModifyProfile() {
                 {saved && <label className="signup-label">Modifications sauvées!</label>}
                 {!passwordMatch && <label className="signup-label signup-label-red">Les mots de passe ne correspondent pas.</label>}
             </form>
+
+            <div className="delete-account-section">
+                <button className="delete-account-button" onClick={handleDeleteAccount}>
+                    Delete Account
+                </button>
+            </div>
+
         </div>
       }
     </div>
