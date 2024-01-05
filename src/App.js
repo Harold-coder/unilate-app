@@ -15,7 +15,7 @@ import ModifyProfile from "./pages/ModifyProfile";
 // export const urlServer = "http://ec2-51-20-103-254.eu-north-1.compute.amazonaws.com:8012/";
 export const urlServer = "https://hhd09d017j.execute-api.eu-north-1.amazonaws.com/dev/";
 
-export const localDev = false;
+export const localDev = false;    //TODO: Make it such that you have a security, when deployed it's guranteed to be false.
 
 export const mockDoctor = {
   'doctor_id': 888,
