@@ -12,6 +12,7 @@ function SignUp() {
   const [profession, setProfession] = useState()
   const [city, setCity] = useState()
   const [phoneNumber, setPhoneNumber] = useState()
+  // const [picture, setPicture] = useState('man-white-brown')
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)

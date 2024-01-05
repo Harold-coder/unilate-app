@@ -39,7 +39,7 @@ function PatientPage() {
       <NavbarPatient/>
       {doctor && 
         <DoctorProfile
-        picture={"man-image.png"}
+        picture={doctor.picture+".png"}
         name={doctor.name}
         city={doctor.city}
         job={doctor.specialty}
