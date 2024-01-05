@@ -12,6 +12,16 @@ function ModifyProfile() {
   const [fullName, setFullName] = useState()
   const [profession, setProfession] = useState()
   const [city, setCity] = useState()
+  const [picture, setPicture] = useState('man-white-brown')
+
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
+
+  const avatars = [
+    'man-asian', 'man-black', 'man-white-brown-blue', 'man-white-blond', 'man-white-brown', 'man-white-ginger', 
+    'woman-asian-long', 'woman-asian-short', 'woman-black-long', 'woman-black-short', 
+    'woman-white-long-blond', 'woman-white-long-brown', 'woman-white-short-blond', 'woman-white-short-brown',
+    'woman-white-long-ginger', 'woman-white-short-ginger'
+  ];
 
   const [loaded, setLoaded] = useState(false)
 
@@ -88,6 +98,33 @@ function ModifyProfile() {
     }
   };
 
+  const handleAvatarClick = (avatar) => {
+    setPicture(avatar);
+    setIsAvatarModalOpen(false); // Close the modal after selection
+  };
+
+  const openAvatarModal = () => {
+    setIsAvatarModalOpen(true);
+  };
+
+  const AvatarModal = () => (
+    <div className="modal">
+      <div className="modal-content">
+        <div className="avatar-grid">
+          {avatars.map((avatar) => (
+            <img 
+              key={avatar} 
+              src={require(`../images/${avatar}.png`)} 
+              alt={avatar} 
+              className={`avatar ${picture === avatar ? 'selected' : ''}`}
+              onClick={() => handleAvatarClick(avatar)} 
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
   function submitForm(event) {
     event.preventDefault();
     if (!password || password === confirmPassword) {
@@ -125,6 +162,19 @@ function ModifyProfile() {
                 <label className="signup-label">Profession</label>
                 <input type="text" placeholder="Gynécologue" className="login-input" onChange={(e) => setProfession(e.target.value)} value={profession}></input>
                 </div>
+
+                <div className="avatar-selector">
+                  {/* <button className="avatar-button" type="button" onClick={openAvatarModal}>Choose Avatar</button> */}
+                  <img 
+                    onClick={openAvatarModal}
+                    src={require(`../images/${picture}.png`)} 
+                    alt="Selected Avatar" 
+                    className="selected-avatar-image"
+                  />
+                </div>
+                {isAvatarModalOpen && <AvatarModal />}
+
+                
                 <div className="password-div">
                 <label className="signup-label">Nouveau mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>

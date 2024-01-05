@@ -12,7 +12,17 @@ function SignUp() {
   const [profession, setProfession] = useState()
   const [city, setCity] = useState()
   const [phoneNumber, setPhoneNumber] = useState()
-  // const [picture, setPicture] = useState('man-white-brown')
+  const [picture, setPicture] = useState('man-white-brown')
+
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
+
+  const avatars = [
+    'man-asian', 'man-black', 'man-white-brown-blue', 'man-white-blond', 'man-white-brown', 'man-white-ginger', 
+    'woman-asian-long', 'woman-asian-short', 'woman-black-long', 'woman-black-short', 
+    'woman-white-long-blond', 'woman-white-long-brown', 'woman-white-short-blond', 'woman-white-short-brown',
+    'woman-white-long-ginger', 'woman-white-short-ginger'
+  ];
+  
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)
@@ -20,13 +30,14 @@ function SignUp() {
 
   const navigate = useNavigate();
 
-  const createUser = (email, password, fullName, profession, city, phoneNumber) => {
+  const createUser = (email, password, fullName, profession, city, phoneNumber, picture) => {
     Axios.post(`${urlServer}doctors/register`, {
       name: fullName,
       specialty: profession,
       city: city,
       email: email,
       phone_number: phoneNumber,
+      picture: picture,
       hospital_name: 'None',
       password: password,
     }).then((response) => {
@@ -40,6 +51,33 @@ function SignUp() {
     });
   };
 
+  const handleAvatarClick = (avatar) => {
+    setPicture(avatar);
+    setIsAvatarModalOpen(false); // Close the modal after selection
+  };
+
+  const openAvatarModal = () => {
+    setIsAvatarModalOpen(true);
+  };
+
+  const AvatarModal = () => (
+    <div className="modal">
+      <div className="modal-content">
+        <div className="avatar-grid">
+          {avatars.map((avatar) => (
+            <img 
+              key={avatar} 
+              src={require(`../images/${avatar}.png`)} 
+              alt={avatar} 
+              className={`avatar ${picture === avatar ? 'selected' : ''}`}
+              onClick={() => handleAvatarClick(avatar)} 
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
   // TODO: Add a check for the phone number and re organise code using clean code rules
   function submitForm(event){
     event.preventDefault();
@@ -49,7 +87,7 @@ function SignUp() {
       setPasswordMatch(false);
     }
     else {  // Everything is good we can create the user
-      createUser(email, password, fullName, profession, city, phoneNumber);
+      createUser(email, password, fullName, profession, city, phoneNumber, picture);
     }
   }
 
@@ -58,6 +96,8 @@ function SignUp() {
     setValidFormat(true);
     setEmailExists(false);
   }, [email, fullName, city, profession, password, confirmPassword])
+
+
   return (
     <div>
     <NavbarPatient/>
@@ -84,6 +124,19 @@ function SignUp() {
                 <label className="signup-label">Numéro de telephone</label>
                 <input type="text" placeholder="+32..." className="login-input" onChange={(e) => setPhoneNumber(e.target.value)}></input>
                 </div>
+                
+
+                <div className="avatar-selector">
+                  {/* <button className="avatar-button" type="button" onClick={openAvatarModal}>Choose Avatar</button> */}
+                  <img 
+                    onClick={openAvatarModal}
+                    src={require(`../images/${picture}.png`)} 
+                    alt="Selected Avatar" 
+                    className="selected-avatar-image"
+                  />
+                </div>
+                {isAvatarModalOpen && <AvatarModal />}
+
                 <div className="password-div">
                 <label className="signup-label">Mot de passe</label>
                 <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
