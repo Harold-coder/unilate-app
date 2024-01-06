@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ModifyProfile from "./pages/ModifyProfile";
+import WelcomePage from "./pages/WelcomePage";
 
 // export const urlServer = "http://localhost:3001/";
 // export const urlServer = "https://unilate-server-f22fc8c7c32c.herokuapp.com/";
@@ -34,7 +35,8 @@ function App() {
     <div>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/doctorPage/:id" element={<DoctorPage />} />
         <Route path="/patientPage/:id" element={<PatientPage />} />
         <Route path="/errorPage" element={<Error />} />
