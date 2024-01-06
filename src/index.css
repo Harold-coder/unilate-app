@@ -248,7 +248,7 @@ transition-duration: 100ms;
   margin-top: 0.7rem;
   width: 4.5rem; /* Adjust as needed */
   height: 4.5rem;
-  border: 1.5px solid rgb(160, 157, 157);
+  border: 1.5px solid #5383FF;
   border-radius: 5px;
   cursor: pointer;
 }
