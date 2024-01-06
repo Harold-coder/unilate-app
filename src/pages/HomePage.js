@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div className='home-page'>
         <NavbarHome />
-        <h1 className="hero"><b id="first-letter">U</b>nilate</h1>
+        <h1 className="hero"><b id="first-letter">U</b>nilate Dev</h1>
         <Search/>
     </div>
   );
