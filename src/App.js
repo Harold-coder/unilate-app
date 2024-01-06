@@ -13,7 +13,8 @@ import ModifyProfile from "./pages/ModifyProfile";
 
 // export const urlServer = "http://10.50.2.238:8012/";
 // export const urlServer = "http://ec2-51-20-103-254.eu-north-1.compute.amazonaws.com:8012/";
-export const urlServer = "https://hhd09d017j.execute-api.eu-north-1.amazonaws.com/dev/";
+// export const urlServer = "https://hhd09d017j.execute-api.eu-north-1.amazonaws.com/dev/";
+export const urlServer = "https://api.unilate.be/";
 
 export const localDev = false;    //TODO: Make it such that you have a security, when deployed it's guranteed to be false.
 
