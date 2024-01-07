@@ -42,13 +42,31 @@ function SignUp() {
       password: password,
     }).then((response) => {
       if (response.data.message === 'New doctor registered') {
-        navigate('/login');     // TODO: Make it go to doctorPage instantly and add cookies. 
+        fetchDoctorIdAndRedirect();     // TODO: Make it go to doctorPage instantly and add cookies. 
       } else {
-        setEmailExists(true);
+        setEmailExists(true);   //TODO: change this to a better message
       }
     }).catch((error) => {
       setEmailExists(true); // Consider more specific error handling
     });
+  };
+
+  const fetchDoctorIdAndRedirect = async () => {
+    try {
+      // Assuming you have an endpoint like `/doctors/me` that uses the token to identify the doctor
+      const response = await Axios.get(`${urlServer}doctors/me`, {
+        withCredentials: true // if you're using cookies
+      });
+
+      if (response.status === 200 && response.data.doctor.doctor_id) {
+        navigate(`/doctorPage/${response.data.doctor.doctor_id}`);
+      } else {
+        // Handle any error or unexpected response
+        console.error('Failed to get doctor id');
+      }
+    } catch (error) {
+      console.error('Error fetching doctor id:', error);
+    }
   };
 
   const handleAvatarClick = (avatar) => {
@@ -127,7 +145,6 @@ function SignUp() {
                 
 
                 <div className="avatar-selector">
-                  {/* <button className="avatar-button" type="button" onClick={openAvatarModal}>Choose Avatar</button> */}
                   <img 
                     onClick={openAvatarModal}
                     src={require(`../../images/${picture}.png`)} 
