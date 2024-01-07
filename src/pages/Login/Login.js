@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import NavbarPatient from "../../components/NavbarPatient";
 import { urlServer } from "../../App";
+import Loading from "../../components/Loading";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -79,7 +80,7 @@ function Login() {
     <div>
       <NavbarPatient />
       {loading && 
-        <div className="loading">Validation en cours...</div>
+        <Loading/>
       }
 
       {!loading && 

@@ -198,7 +198,6 @@ function ModifyProfile() {
                     Delete Account
                 </button>
             </div>
-
         </div>
       }
     </div>

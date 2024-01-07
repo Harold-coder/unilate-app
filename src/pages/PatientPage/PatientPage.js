@@ -1,5 +1,4 @@
 import DateTime from "../../components/DateTime";
-import Retard from "../../components/Retard";
 import DoctorProfile from "../../components/DoctorProfile";
 import NavbarPatient from "../../components/NavbarPatient";
 import "../../doctor-page.css"
@@ -7,6 +6,8 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { urlServer } from "../../App";
+import DelayPatient from "./DelayPatient";
+import Loading from "../../components/Loading";
 
 function PatientPage() {
   const [doctor, setDoctor] = useState(null);
@@ -31,7 +32,7 @@ function PatientPage() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Or any other loading state representation
+    return <Loading/>; // Or any other loading state representation
   }
 
   return (
@@ -46,7 +47,7 @@ function PatientPage() {
         />
       }
       <DateTime/>
-      <Retard page="patient"/>
+      <DelayPatient/>
     </div>
   );
 }
