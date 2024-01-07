@@ -1,8 +1,8 @@
-import NavbarPatient from "../components/PatientPage/NavbarPatient";
+import NavbarPatient from "../../components/NavbarPatient";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import { urlServer } from "../App";
+import { urlServer } from "../../App";
 
 function SignUp() {
   const [email, setEmail] = useState()
@@ -67,7 +67,7 @@ function SignUp() {
           {avatars.map((avatar) => (
             <img 
               key={avatar} 
-              src={require(`../images/${avatar}.png`)} 
+              src={require(`../../images/${avatar}.png`)} 
               alt={avatar} 
               className={`avatar ${picture === avatar ? 'selected' : ''}`}
               onClick={() => handleAvatarClick(avatar)} 
@@ -130,7 +130,7 @@ function SignUp() {
                   {/* <button className="avatar-button" type="button" onClick={openAvatarModal}>Choose Avatar</button> */}
                   <img 
                     onClick={openAvatarModal}
-                    src={require(`../images/${picture}.png`)} 
+                    src={require(`../../images/${picture}.png`)} 
                     alt="Selected Avatar" 
                     className="selected-avatar-image"
                   />

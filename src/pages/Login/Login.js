@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import NavbarPatient from "../components/PatientPage/NavbarPatient";
-import { urlServer } from "../App";
+import NavbarPatient from "../../components/NavbarPatient";
+import { urlServer } from "../../App";
 
 function Login() {
   const [email, setEmail] = useState('');

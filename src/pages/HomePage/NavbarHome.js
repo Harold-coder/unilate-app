@@ -38,7 +38,7 @@ export default function NavbarHome() {
                     <button className="inscription">Mon Profil</button>
                 </Link>
             ) : (
-                <Link className="link" to="/login">
+                <Link className="link" to="/">
                     <button className="inscription">Médecin</button>
                 </Link>
             )}

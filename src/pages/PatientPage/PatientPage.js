@@ -1,12 +1,12 @@
-import DateTime from "../components/General/DateTime";
-import Retard from "../components/General/Retard";
-import DoctorProfile from "../components/PatientPage/DoctorProfile";
-import NavbarPatient from "../components/PatientPage/NavbarPatient";
-import "../doctor-page.css"
+import DateTime from "../../components/DateTime";
+import Retard from "../../components/Retard";
+import DoctorProfile from "../../components/DoctorProfile";
+import NavbarPatient from "../../components/NavbarPatient";
+import "../../doctor-page.css"
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import { urlServer } from "../App";
+import { urlServer } from "../../App";
 
 function PatientPage() {
   const [doctor, setDoctor] = useState(null);
