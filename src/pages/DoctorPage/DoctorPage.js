@@ -3,8 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import NavbarDoctor from "./NavbarDoctor";
 import DateTime from "../../components/DateTime";
-import Retard from "../../components/Retard";
 import { localDev, mockDoctor, urlServer } from "../../App";
+import DelayDoctor from "./DelayDoctor";
+import Loading from "../../components/Loading";
 
 function DoctorPage() {
   const [doctor, setDoctor] = useState(null);
@@ -39,7 +40,7 @@ function DoctorPage() {
   }, [id, navigate]);
 
   if (isLoading) {
-    return <div className="loading">Loading...</div>;
+    return <Loading/>;
   }
 
   return (
@@ -49,7 +50,7 @@ function DoctorPage() {
           <NavbarDoctor picture={doctor.picture+".png"} id={doctor.doctor_id} />
           {localDev && <p>We are testing locally, we are using Mock values for the doctor in order to bypass cookies.</p>}
           <DateTime />
-          <Retard page="doctor"/>
+          <DelayDoctor/>
         </div>
       )}
     </div>
