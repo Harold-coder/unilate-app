@@ -119,8 +119,8 @@ nav{
   border: 2px solid white;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  height: 14rem;
-  width: 15rem;
+  height: 14.5rem;
+  width: 15.6rem;
   cursor: pointer;
   transition-duration: 100ms
 
@@ -140,7 +140,7 @@ nav{
 }
 .name{
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   margin-bottom: 0.7rem;
 }
 .personal-info{
