@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { localDev, urlServer } from "../../App";
+import { localDev, urlServer } from "../App";
 
 export default function Retard(props) {
     const date = new Date();

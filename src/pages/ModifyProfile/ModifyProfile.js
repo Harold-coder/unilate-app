@@ -1,8 +1,8 @@
-import NavbarPatient from "../components/PatientPage/NavbarPatient";
+import NavbarPatient from "../../components/NavbarPatient";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { urlServer } from "../App";
+import { urlServer } from "../../App";
 
 // This page needs to be modified a lot hihi
 function ModifyProfile() {
@@ -106,7 +106,7 @@ function ModifyProfile() {
           {avatars.map((avatar) => (
             <img 
               key={avatar} 
-              src={require(`../images/${avatar}.png`)} 
+              src={require(`../../images/${avatar}.png`)} 
               alt={avatar} 
               className={`avatar ${picture === avatar ? 'selected' : ''}`}
               onClick={() => handleAvatarClick(avatar)} 
@@ -172,7 +172,7 @@ function ModifyProfile() {
                 <div className="avatar-selector">
                   <img 
                     onClick={openAvatarModal}
-                    src={require(`../images/${picture}.png`)} 
+                    src={require(`../../images/${picture}.png`)} 
                     alt="Selected Avatar" 
                     className="selected-avatar-image"
                   />

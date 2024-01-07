@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import NavbarDoctor from "../components/DoctorPage/NavbarDoctor";
-import DateTime from "../components/General/DateTime";
-import Retard from "../components/General/Retard";
-import { localDev, mockDoctor, urlServer } from "../App";
+import NavbarDoctor from "./NavbarDoctor";
+import DateTime from "../../components/DateTime";
+import Retard from "../../components/Retard";
+import { localDev, mockDoctor, urlServer } from "../../App";
 
 function DoctorPage() {
   const [doctor, setDoctor] = useState(null);
