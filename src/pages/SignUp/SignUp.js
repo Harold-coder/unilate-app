@@ -1,4 +1,4 @@
-import NavbarPatient from "../../components/NavbarPatient";
+import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "axios";
@@ -100,7 +100,7 @@ function SignUp() {
 
   return (
     <div>
-    <NavbarPatient/>
+    <Navbar/>
     <div className='login-page'>
         <div className="signup-full-form">
             <form className="signup-form">

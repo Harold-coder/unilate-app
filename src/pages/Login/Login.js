@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import NavbarPatient from "../../components/NavbarPatient";
+import Navbar from "../../components/Navbar";
 import { urlServer } from "../../App";
 import Loading from "../../components/Loading";
 
@@ -78,7 +78,7 @@ function Login() {
 
   return (
     <div>
-      <NavbarPatient />
+      <Navbar />
       {loading && 
         <Loading/>
       }

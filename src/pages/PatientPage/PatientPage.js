@@ -1,6 +1,6 @@
 import DateTime from "../../components/DateTime";
 import DoctorProfile from "../../components/DoctorProfile";
-import NavbarPatient from "../../components/NavbarPatient";
+import Navbar from "../../components/Navbar";
 import "../../doctor-page.css"
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
@@ -37,7 +37,7 @@ function PatientPage() {
 
   return (
     <div className='patient-page'>
-      <NavbarPatient/>
+      <Navbar/>
       {doctor && 
         <DoctorProfile
         picture={doctor.picture+".png"}

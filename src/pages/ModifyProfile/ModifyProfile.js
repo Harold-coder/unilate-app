@@ -1,4 +1,4 @@
-import NavbarPatient from "../../components/NavbarPatient";
+import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
@@ -147,7 +147,7 @@ function ModifyProfile() {
 
   return (
     <div>
-    <NavbarPatient/>
+    <Navbar/>
     <div className='login-page'>
       {loaded &&
         <div className="signup-full-form">
