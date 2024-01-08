@@ -83,12 +83,12 @@ nav{
   text-shadow: -0.22rem 0.22rem #031941;
   margin-bottom: 3rem;
   margin-top: 3rem;
-  cursor: pointer;
+  cursor: default;
 }
 
 .hero-letter {
   display: inline-block;
-  animation: jumpLetter 0.5s ease forwards;
+  animation: jumpLetter 1s ease forwards;
 }
 
 /* Keyframes for animation */
@@ -97,7 +97,7 @@ nav{
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
 }
 
