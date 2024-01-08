@@ -14,8 +14,11 @@ export default function DateTime() {
     
     return (
         <div className="date-time">
-            <p>{date.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</p>
-            <p>{date.toLocaleTimeString()}</p>
+            <p>
+                {date.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+                    .replace(/^\S/, (s) => s.toUpperCase())}
+            </p>
+            <p>{date.toLocaleTimeString('fr-FR')}</p>
         </div>
     )
 }
