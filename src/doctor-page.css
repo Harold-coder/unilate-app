@@ -74,20 +74,6 @@ body {
     cursor: pointer;
 }
 
-.dropdownGender{
-    text-align: center;
-    font-size: 1.3rem;
-    height: 3rem;
-    width: 21rem;
-    margin-bottom: 1em;
-    background-color: #5383FF;
-    color: white;
-    border: 2px solid #5383FF;
-    border-radius: 5px;
-    appearance: none;
-    cursor: pointer;
-}
-
 
 .retard-patient{
     font-size: 1.5rem;

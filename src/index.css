@@ -76,19 +76,35 @@ nav{
 
 
 /* Hero */
-.hero{
+.hero {
   text-align: center;
   color: #5383FF;
   font-size: 7rem;
   text-shadow: -0.22rem 0.22rem #031941;
   margin-bottom: 3rem;
   margin-top: 3rem;
-  cursor: default;
+  cursor: pointer;
 }
 
-#first-letter{
+.hero-letter {
+  display: inline-block;
+  animation: jumpLetter 0.5s ease forwards;
+}
+
+/* Keyframes for animation */
+@keyframes jumpLetter {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+#first-letter {
   font-size: 10rem;
 }
+
 
 /* Search Bar */
 .input-area{
