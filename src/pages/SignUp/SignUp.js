@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { urlServer } from "../../App";
+import Loading from "../../components/Loading";
 
 function SignUp() {
   const [email, setEmail] = useState()
