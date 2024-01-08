@@ -27,11 +27,14 @@ function SignUp() {
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)
-  const [emailExists, setEmailExists] = useState(false)
+  const [error, setError] = useState(false)
+
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const createUser = (email, password, fullName, profession, city, phoneNumber, picture) => {
+    setLoading(true);
     Axios.post(`${urlServer}doctors/register`, {
       name: fullName,
       specialty: profession,
@@ -45,10 +48,12 @@ function SignUp() {
       if (response.data.message === 'New doctor registered') {
         fetchDoctorIdAndRedirect();     // TODO: Make it go to doctorPage instantly and add cookies. 
       } else {
-        setEmailExists(true);   //TODO: change this to a better message
+        setLoading(false);
+        setError(true);   //TODO: change this to a better message
       }
     }).catch((error) => {
-      setEmailExists(true); // Consider more specific error handling
+      setLoading(false);
+      setError(true); // Consider more specific error handling
     });
   };
 
@@ -62,10 +67,12 @@ function SignUp() {
       if (response.status === 200 && response.data.doctor.doctor_id) {
         navigate(`/doctorPage/${response.data.doctor.doctor_id}`);
       } else {
+        setLoading(false);
         // Handle any error or unexpected response
         console.error('Failed to get doctor id');
       }
     } catch (error) {
+      setLoading(false);
       console.error('Error fetching doctor id:', error);
     }
   };
@@ -111,65 +118,71 @@ function SignUp() {
   }
 
   useEffect(() => {
+    setLoading(false);
     setPasswordMatch(true);
     setValidFormat(true);
-    setEmailExists(false);
+    setError(false);
   }, [email, fullName, city, profession, password, confirmPassword])
 
 
   return (
     <div>
     <Navbar/>
-    <div className='login-page'>
-        <div className="signup-full-form">
-            <form className="signup-form">
-                <div className="email-div">
-                <label className="signup-label">Email</label>
-                <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
-                </div>
-                <div className="email-div">
-                <label className="signup-label">Nom et Prénom</label>
-                <input type="text" placeholder="John Doe" className="login-input" onChange={(e) => setFullName(e.target.value)}></input>
-                </div>
-                <div className="email-div">
-                <label className="signup-label">Ville</label>
-                <input type="text" placeholder="Gembloux" className="login-input" onChange={(e) => setCity(e.target.value)}></input>
-                </div>
-                <div className="email-div">
-                <label className="signup-label">Profession</label>
-                <input type="text" placeholder="Gynécologue" className="login-input" onChange={(e) => setProfession(e.target.value)}></input>
-                </div>
-                <div className="email-div">
-                <label className="signup-label">Numéro de telephone</label>
-                <input type="text" placeholder="+32..." className="login-input" onChange={(e) => setPhoneNumber(e.target.value)}></input>
-                </div>
-                
+    {loading && 
+        <Loading/>
+    }
+    {!loading && 
+      <div className='login-page'>
+          <div className="signup-full-form">
+              <form className="signup-form">
+                  <div className="email-div">
+                  <label className="signup-label">Email</label>
+                  <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
+                  </div>
+                  <div className="email-div">
+                  <label className="signup-label">Nom et Prénom</label>
+                  <input type="text" placeholder="John Doe" className="login-input" onChange={(e) => setFullName(e.target.value)}></input>
+                  </div>
+                  <div className="email-div">
+                  <label className="signup-label">Ville</label>
+                  <input type="text" placeholder="Gembloux" className="login-input" onChange={(e) => setCity(e.target.value)}></input>
+                  </div>
+                  <div className="email-div">
+                  <label className="signup-label">Profession</label>
+                  <input type="text" placeholder="Gynécologue" className="login-input" onChange={(e) => setProfession(e.target.value)}></input>
+                  </div>
+                  <div className="email-div">
+                  <label className="signup-label">Numéro de telephone</label>
+                  <input type="text" placeholder="+32..." className="login-input" onChange={(e) => setPhoneNumber(e.target.value)}></input>
+                  </div>
+                  
 
-                <div className="avatar-selector">
-                  <img 
-                    onClick={openAvatarModal}
-                    src={require(`../../images/${picture}.png`)} 
-                    alt="Selected Avatar" 
-                    className="selected-avatar-image"
-                  />
-                </div>
-                {isAvatarModalOpen && <AvatarModal />}
+                  <div className="avatar-selector">
+                    <img 
+                      onClick={openAvatarModal}
+                      src={require(`../../images/${picture}.png`)} 
+                      alt="Selected Avatar" 
+                      className="selected-avatar-image"
+                    />
+                  </div>
+                  {isAvatarModalOpen && <AvatarModal />}
 
-                <div className="password-div">
-                <label className="signup-label">Mot de passe</label>
-                <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
-                </div>
-                <div className="password-div">
-                <label className="signup-label">Confirmer le mot de passe</label>
-                <input type="password" placeholder="*********" className="login-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                {!passwordMatch && <label className="signup-label signup-label-red">Les mots de passe ne correspondent pas.</label>}
-                {!validFormat && <label className="signup-label signup-label-red">Certains champs n'ont pas été complétés correctement.</label>}
-                {emailExists && <label className="signup-label signup-label-red">L'adresse email existe déjà.</label>}
-                </div>
-                <button className="signup-button" onClick={submitForm}>Créer le compte</button>
-            </form>
-        </div>
-    </div>
+                  <div className="password-div">
+                  <label className="signup-label">Mot de passe</label>
+                  <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
+                  </div>
+                  <div className="password-div">
+                  <label className="signup-label">Confirmer le mot de passe</label>
+                  <input type="password" placeholder="*********" className="login-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
+                  {!passwordMatch && <label className="signup-label signup-label-red">Les mots de passe ne correspondent pas.</label>}
+                  {!validFormat && <label className="signup-label signup-label-red">Certains champs n'ont pas été complétés correctement.</label>}
+                  {error && <label className="signup-label signup-label-red">Une erreur est survenue.</label>}
+                  </div>
+                  <button className="signup-button" onClick={submitForm}>Créer le compte</button>
+              </form>
+          </div>
+      </div>
+    }
     </div>
   );
 }
