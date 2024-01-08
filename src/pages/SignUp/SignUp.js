@@ -59,6 +59,7 @@ function SignUp() {
       });
 
       if (response.status === 200 && response.data.doctor.doctor_id) {
+        console.log("Saluuuuuuuuuuuuuuut!!!!!!");
         navigate(`/doctorPage/${response.data.doctor.doctor_id}`);
       } else {
         // Handle any error or unexpected response
