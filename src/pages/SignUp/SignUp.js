@@ -23,6 +23,7 @@ function SignUp() {
     'woman-white-long-ginger', 'woman-white-short-ginger'
   ];
   
+  Axios.defaults.withCredentials = true;
 
   const [passwordMatch, setPasswordMatch] = useState(true)
   const [validFormat, setValidFormat] = useState(true)
@@ -59,7 +60,6 @@ function SignUp() {
       });
 
       if (response.status === 200 && response.data.doctor.doctor_id) {
-        console.log("Saluuuuuuuuuuuuuuut!!!!!!");
         navigate(`/doctorPage/${response.data.doctor.doctor_id}`);
       } else {
         // Handle any error or unexpected response
