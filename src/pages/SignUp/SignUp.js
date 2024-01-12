@@ -47,7 +47,7 @@ function SignUp() {
       password: password,
     }).then((response) => {
       if (response.data.message === 'New doctor registered') {
-        fetchDoctorIdAndRedirect();     // TODO: Make it go to doctorPage instantly and add cookies. 
+        fetchDoctorIdAndRedirect(); 
       } else {
         setLoading(false);
         setError(true);   //TODO: change this to a better message

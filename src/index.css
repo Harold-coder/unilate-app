@@ -218,18 +218,33 @@ nav{
 
 .create-button-a{
   font-size: 1.1rem;
-width: 10rem;
-min-height: 2.5rem;
-cursor: pointer;
-color: #5383FF;
-background-color:white;
-border: 1px solid white;
+  width: 10rem;
+  min-height: 2.5rem;
+  cursor: pointer;
+  color: #5383FF;
+  background-color:white;
+  border: 1px solid white;
 
-border-radius: 5px;
-margin-top: 2rem;
-transition-duration: 100ms;
-
+  border-radius: 5px;
+  margin-top: 2rem;
+  transition-duration: 100ms;
 }
+
+.mail-button {
+  font-size: 1.1rem;
+  width: 8rem;
+  min-height: 2rem;
+  cursor: pointer;
+  color: white;
+  background-color: #5383FF;
+  border: 1px solid #5383FF;
+  border-radius: 5px;
+  margin-top: 1rem;
+  transition-duration: 100ms;
+  padding-top: 0.7rem;
+  text-decoration: none;
+}
+
 .login-full-form, .signup-full-form{
   display: flex;
   flex-direction: column;

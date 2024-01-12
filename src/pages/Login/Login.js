@@ -108,7 +108,7 @@ function Login() {
             </div>
             <div className="right-form-b">
               <label className="login-label">Besoin d'aide ? </label>
-              <button className="create-button">Mail</button>
+              <a href="mailto:harold.unilate@gmail.com?subject=Help Request from Unilate" className="mail-button">Mail</a>
             </div>
           </div>
         </div>
