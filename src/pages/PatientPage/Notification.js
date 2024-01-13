@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { urlServer } from "../../App";
-import './notification.css'; // Adjust the path if necessary
-
+import './notification.css'; // Ensure the path is correct
 
 const Notification = (props) => {
     const [email, setEmail] = useState('');
@@ -17,33 +16,31 @@ const Notification = (props) => {
                 appointment_time: props.appointmentTime
             });
 
-            // Handle response here (e.g., show success message)
             console.log(response.data);
             alert("Subscription successful!");
         } catch (error) {
-            // Handle error here (e.g., show error message)
             console.error("There was an error!", error);
             alert("Subscription failed!");
         }
     };
 
     return (
-        <div className="container">
-            <h2>Me faire notifier en cas de retard</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                <label>Addresse Email:</label>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
+        <div className="notification-container">
+            <h2 className="notification-title">Me faire notifier en cas de retard</h2>
+            <form className="notification-form" onSubmit={handleSubmit}>
+                <div className="notification-form-div">
+                    <label className="notification-label">Adresse Email:</label>
+                    <input
+                        type="email"
+                        className="notification-input"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
                 </div>
-                <button type="submit">Confirmer</button>
+                <button className="notification-button" type="submit">Confirmer</button>
             </form>
         </div>
-
     );
 };
 
