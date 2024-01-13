@@ -83,7 +83,7 @@ export default function DelayPatient() {
                     
                 )}
                 {patientHour !== "0" && (
-                    <Notification doctorID={id}appointmentTime={patientHour}/>
+                    <Notification doctorId={id}appointmentTime={patientHour}/>
                 )}
             </div>
         );
