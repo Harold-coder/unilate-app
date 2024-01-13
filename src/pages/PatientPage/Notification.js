@@ -5,7 +5,7 @@ import './notification.css'; // Adjust the path if necessary
 
 
 const Notification = (props) => {
-    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const Notification = (props) => {
         try {
             const response = await axios.post(`${urlServer}subscribe`, {
                 doctor_id: props.doctorId,
-                phone_number: phone,
+                email: email,
                 appointment_time: props.appointmentTime
             });
 
@@ -32,11 +32,11 @@ const Notification = (props) => {
             <h2>Me faire notifier en cas de retard</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                <label>Phone Number:</label>
+                <label>Addresse Email:</label>
                 <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
                 </div>
