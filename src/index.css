@@ -22,7 +22,8 @@ nav{
   margin-right: 1rem;
   border-width: 10px;
   cursor: pointer;
-  transition-duration: 400ms
+  transition-duration: 400ms;
+  text-transform: none;
 }
 
 
@@ -64,6 +65,7 @@ nav{
   margin-left: 3.5rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  text-transform: none;
 }
 
 .welcome-button:hover,
@@ -213,7 +215,8 @@ nav{
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
   font-weight: bold;
-  color: white
+  color: white;
+  
 }
 
 .create-button-a{
@@ -228,6 +231,7 @@ nav{
   border-radius: 5px;
   margin-top: 2rem;
   transition-duration: 100ms;
+  text-transform: none;
 }
 
 .mail-button {
@@ -452,8 +456,8 @@ nav{
   border: 1px solid #5383FF;
   border-radius: 5px;
   margin-top: 2rem;
-  transition-duration: 100ms
-
+  transition-duration: 100ms;
+  text-transform: none;
 }
 
 
