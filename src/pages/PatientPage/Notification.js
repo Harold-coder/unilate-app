@@ -11,7 +11,7 @@ const Notification = (props) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${urlServer}/subscribe`, {
+            const response = await axios.post(`${urlServer}subscribe`, {
                 doctor_id: props.doctorId,
                 phone_number: phone,
                 appointment_time: props.appointmentTime
