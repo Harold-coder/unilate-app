@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import Axios from "axios";
 import { localDev, urlServer } from "../../App";
 import Loading from "../../components/Loading";
+import Notification from "./Notification";
+
 
 export default function DelayPatient() {
     const date = new Date();
@@ -78,6 +80,10 @@ export default function DelayPatient() {
                         <p>Retard annoncé:</p>
                         <p id="retard-announced">{delayToText[delay]}</p>
                     </div>
+                    
+                )}
+                {patientHour !== "0" && (
+                    <Notification doctorID={id}appointmentTime={patientHour}/>
                 )}
             </div>
         );
