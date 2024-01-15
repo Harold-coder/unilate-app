@@ -12,175 +12,12 @@ nav{
   justify-content: flex-end;
   height: 4rem;
 }
-.inscription{
-  font-size: 1.5rem;
-  color: white;
-  background-color: #5383FF;
-  border: 1px solid #5383FF;
-  border-radius: 5px;
-  margin-top: 1.2rem;
-  margin-right: 1rem;
-  border-width: 10px;
-  cursor: pointer;
-  transition-duration: 400ms;
-  text-transform: none;
-}
-
-
-.inscription:hover{
-  background-color: #2964f8;
-  border-color: #2964f8;
-  transition-duration: 400ms
-}
-
-.welcome-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Use full height to center vertically */
-  background-color: white; /* Light gray background, change as needed */
-  color: #5383FF; /* Dark text color for contrast */
-  font-family: 'Arial', sans-serif; /* Use a common stack or your custom font */
-}
-
-.welcome-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5em;
-}
-
-.welcome-p {
-  font-size: 1.25rem;
-  margin-bottom: 4.5em;
-}
-
-.welcome-button {
-  font-size: 1.5rem;
-  color: white;
-  background-color: #5383FF;
-  border: none;
-  border-radius: 10px;
-  padding: 1rem 2rem;
-  margin-right: 3.5rem; /* Equal margin for top/bottom and left/right */
-  margin-left: 3.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  text-transform: none;
-}
-
-.welcome-button:hover,
-.welcome-button:focus {
-  background-color: #2964f8; /* Darker shade on hover/focus */
-  transform: scale(1.05); /* Slightly enlarge the buttons when hovered/focused */
-  outline: none; /* Remove focus outline, use with caution */
-}
-
-
-
-/* Hero */
-.hero {
-  text-align: center;
-  color: #5383FF;
-  font-size: 7rem;
-  text-shadow: -0.22rem 0.22rem #031941;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
-  cursor: default;
-}
-
-.hero-letter {
-  display: inline-block;
-  animation: jumpLetter 1s ease forwards;
-}
-
-/* Keyframes for animation */
-@keyframes jumpLetter {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
-}
-
-#first-letter {
-  font-size: 10rem;
-}
-
-
-/* Search Bar */
-.input-area{
-  text-align: center;
-}
-.search{
-  width: 70%;
-  max-width: 50rem;
-  height: 3rem;
-  border: 2px solid #C9C7C7;
-  border-radius: 10px;
-  padding-left: 2rem;
-  font-size: 0.9rem;
-}
-/* Card */
-.cards{
-  display: flex;
-  width: 70%;
-  min-width: 55rem;
-  max-width: 70rem;
-  justify-content: space-around;
-  margin-top: 7rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-.card{
-  text-align: center;
-  border: 2px solid white;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  height: 14.5rem;
-  width: 15.6rem;
-  cursor: pointer;
-  transition-duration: 100ms
-
-}
-
-
-.card:hover{
-  border: 10px solid white;
-  transition-duration: 100ms
-
-}
-
-
-.profile-picture{
-  height: 7rem;
-  width: 7rem;
-}
-.name{
-  margin: 0;
-  font-size: 1.25rem;
-  margin-bottom: 0.7rem;
-}
-.personal-info{
-  margin: 0;
-  margin-top: 0.5rem;
-}
 
 .link{
   text-decoration: none;
   color: #031941;
 }
-/* Error Page */
-.error-page{
-  text-align: center;
-  font-size: 2rem;
-}
-.construction-image{
-  margin-top: 5rem;
-  height: 30rem;
-  width: 30rem;
-  cursor: pointer;
-}
+
 .login-page{
   display: flex;
   flex-direction: row;
@@ -266,6 +103,8 @@ nav{
   justify-content: center;
 }
 
+
+/* MODAL */
 .avatar {
   cursor: pointer;
   border: 2px solid transparent;
@@ -463,28 +302,11 @@ nav{
 
 
 
-
-
-
-
-
-
-
 .login-button:hover, .signup-button:hover, .create-button:hover{
   border: 1px solid #2551bf;  
   background-color: #2964f8;
   transition-duration: 400ms
-
 }
-
-/* .signup-button{
-  margin-top: 2rem;
-  border: .8rem solid #5383FF;
-}
-
-.signup-button:hover{
-  border: .8rem solid #2964f8;
-} */
 
 .create-button{
   padding-bottom: 0.3rem;
@@ -501,53 +323,4 @@ nav{
   border: 2px solid white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .construction-image {
-    animation: construction-image-spin infinite 10s linear;
-  }
-}
-@keyframes construction-image-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@media (max-width: 900px) {
-  .cards{
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    width: 70%;
-    min-width: 20rem;
-    margin-top: 5rem;
-  }
-  .card{
-    margin-top: 0;
-    margin-bottom: 2rem;
-  }
-}
-@media (max-width: 450px) {
-  .hero{
-    text-align: center;
-    color: #5383FF;
-    font-size: 5.6rem;
-    text-shadow: -0.18rem 0.18rem #031941;
-    margin-bottom: 2rem;
-    margin-top: 2.4rem;
-  }
-  #first-letter{
-    color: #5383FF;
-    font-size: 8rem;
-    text-shadow: -0.18rem 0.18rem #031941;
-  }
-  .inscription{
-    font-size: 1.2rem;
-    margin-top: 1.2rem;
-    margin-right: 1rem;
-  }
 }

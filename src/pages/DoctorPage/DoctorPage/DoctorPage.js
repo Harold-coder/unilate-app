@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import NavbarDoctor from "./NavbarDoctor";
-import DateTime from "../../components/DateTime";
-import { localDev, mockDoctor, urlServer } from "../../App";
-import DelayDoctor from "./DelayDoctor";
-import Loading from "../../components/Loading";
+import NavbarDoctor from "../NavbarDoctor/NavbarDoctor";
+import DateTime from "../../../components/DateTime/DateTime";
+import { localDev, mockDoctor, urlServer } from "../../../App";
+import DelayDoctor from "../DelayDoctor/DelayDoctor";
+import Loading from "../../../components/Loading/Loading";
 
 function DoctorPage() {
   const [doctor, setDoctor] = useState(null);

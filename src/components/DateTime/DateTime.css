@@ -1,0 +1,12 @@
+.date-time{
+    text-align: center;
+    margin-top: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+}

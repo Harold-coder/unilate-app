@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { localDev, urlServer } from "../../App";
-import Loading from "../../components/Loading";
-import Notification from "./Notification";
+import { localDev, urlServer } from "../../../App";
+import Loading from "../../../components/Loading/Loading";
+import Notification from "../Notification/Notification";
+import "./DelayPatient.css";
 
 
 export default function DelayPatient() {

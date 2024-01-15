@@ -1,0 +1,61 @@
+.retard-patient{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+    margin-bottom: 4rem;
+    
+}
+.heure-patient{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    max-width: 35rem;
+}
+
+#retard-announced{
+    text-align: center;
+    font-size: 1.3rem;
+    height: 2rem;
+    width: 10rem;
+    margin: 0;
+    padding-top: 0.5rem;
+    /* padding-bottom: 1rem; */
+    margin-bottom: 1em;
+    background-color: #5383FF;
+    color: white;
+    border: 2px solid #5383FF;
+    border-radius: 5px;
+}
+
+.dropdown{
+    text-align: center;
+    font-size: 1.3rem;
+    height: 3rem;
+    width: 10rem;
+    margin-bottom: 1em;
+    background-color: #5383FF;
+    color: white;
+    border: 2px solid #5383FF;
+    border-radius: 5px;
+    appearance: none;
+    cursor: pointer;
+}

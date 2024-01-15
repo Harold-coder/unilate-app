@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { urlServer } from "../../App";
-import './notification.css'; // Ensure the path is correct
+import { urlServer } from "../../../App";
+import './Notification.css'; // Ensure the path is correct
 
 const Notification = (props) => {
     const [email, setEmail] = useState('');

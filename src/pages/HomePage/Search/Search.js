@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import Card from "../../components/Card";
-import { urlServer } from '../../App';
+import Card from "../../../components/Card/Card";
+import { urlServer } from '../../../App';
+import "./Search.css";
 
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);

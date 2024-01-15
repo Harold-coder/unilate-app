@@ -1,0 +1,19 @@
+.inscription{
+    font-size: 1.5rem;
+    color: white;
+    background-color: #5383FF;
+    border: 1px solid #5383FF;
+    border-radius: 5px;
+    margin-top: 1.2rem;
+    margin-right: 1rem;
+    border-width: 10px;
+    cursor: pointer;
+    transition-duration: 400ms;
+    text-transform: none;
+}
+  
+.inscription:hover{
+    background-color: #2964f8;
+    border-color: #2964f8;
+    transition-duration: 400ms
+}

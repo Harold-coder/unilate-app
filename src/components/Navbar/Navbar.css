@@ -1,0 +1,16 @@
+.navbar-patient-page{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1.2rem;
+    padding-right: 0.8rem;
+    height: 5rem;
+    background-color: #5383FF;
+    color: white;
+    font-size: 2rem;
+}
+.title-patient-page{
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}

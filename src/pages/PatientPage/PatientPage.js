@@ -1,13 +1,12 @@
-import DateTime from "../../components/DateTime";
-import DoctorProfile from "../../components/DoctorProfile";
-import Navbar from "../../components/Navbar";
-import "../../doctor-page.css"
+import DateTime from "../../components/DateTime/DateTime";
+import DoctorProfile from "../../components/DoctorProfile/DoctorProfile";
+import Navbar from "../../components/Navbar/Navbar";
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { urlServer } from "../../App";
-import DelayPatient from "./DelayPatient";
-import Loading from "../../components/Loading";
+import DelayPatient from "./DelayPatient/DelayPatient";
+import Loading from "../../components/Loading/Loading";
 
 function PatientPage() {
   const [doctor, setDoctor] = useState(null);
@@ -36,7 +35,7 @@ function PatientPage() {
   }
 
   return (
-    <div className='patient-page'>
+    <div>
       <Navbar/>
       {doctor && 
         <DoctorProfile

@@ -1,0 +1,44 @@
+.card{
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 14.5rem;
+    width: 15.6rem;
+    cursor: pointer;
+    transition-duration: 100ms
+}
+  
+.card:hover{
+    border: 10px solid white;
+    transition-duration: 100ms
+
+}
+.profile-picture{
+    height: 7rem;
+    width: 7rem;
+}
+.name{
+    margin: 0;
+    font-size: 1.25rem;
+    margin-bottom: 0.7rem;
+}
+.personal-info{
+    margin: 0;
+    margin-top: 0.5rem;
+}
+@media (max-width: 900px) {
+    .cards{
+      flex-direction: column;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      width: 70%;
+      min-width: 20rem;
+      margin-top: 5rem;
+    }
+    .card{
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+  }

@@ -1,0 +1,29 @@
+/* Hero */
+.hero {
+    text-align: center;
+    color: #5383FF;
+    font-size: 7rem;
+    text-shadow: -0.22rem 0.22rem #031941;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    cursor: default;
+  }
+  
+  .hero-letter {
+    display: inline-block;
+    animation: jumpLetter 1s ease forwards;
+  }
+  
+  /* Keyframes for animation */
+  @keyframes jumpLetter {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+  }
+  
+  #first-letter {
+    font-size: 10rem;
+  }

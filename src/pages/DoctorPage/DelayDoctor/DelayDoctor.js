@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { localDev, urlServer } from "../../App";
-import Loading from "../../components/Loading";
+import { localDev, urlServer } from "../../../App";
+import Loading from "../../../components/Loading/Loading";
+import "./DelayDoctor.css";
 
 export default function DelayDoctor() {
     const date = new Date();
@@ -92,7 +93,7 @@ export default function DelayDoctor() {
                         {parseInt(endDelay) !== 24 && <option value={24}>Toute la journée</option>}
                     </select>
                     <button className="signup-button" onClick={updateDelay}>Enregistrer</button>
-                    {updated && <label className="signup-label">Votre retard a été mis à jour!</label>}
+                    {updated && <label className="updated-label">Votre retard a été mis à jour!</label>}
                 </div>
             </div>
         );

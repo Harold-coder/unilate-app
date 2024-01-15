@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import DoctorPage from "./pages/DoctorPage/DoctorPage";
+import DoctorPage from "./pages/DoctorPage/DoctorPage/DoctorPage";
 import HomePage from './pages/HomePage/HomePage';
 import PatientPage from "./pages/PatientPage/PatientPage";
 import Login from "./pages/Login/Login";
