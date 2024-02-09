@@ -1,29 +1,50 @@
 /* Hero */
 .hero {
+  text-align: center;
+  color: #5383FF;
+  font-size: 7rem;
+  text-shadow: -0.22rem 0.22rem #031941;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  cursor: default;
+}
+
+.hero-letter {
+  display: inline-block;
+  animation: jumpLetter 1s ease forwards;
+}
+
+/* Keyframes for animation */
+@keyframes jumpLetter {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+#first-letter {
+  font-size: 10rem;
+  }
+
+@media (max-width: 450px) {
+  .hero{
     text-align: center;
     color: #5383FF;
-    font-size: 7rem;
-    text-shadow: -0.22rem 0.22rem #031941;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-    cursor: default;
+    font-size: 5.6rem;
+    text-shadow: -0.18rem 0.18rem #031941;
+    margin-bottom: 2rem;
+    margin-top: 2.4rem;
   }
-  
-  .hero-letter {
-    display: inline-block;
-    animation: jumpLetter 1s ease forwards;
+  #first-letter{
+    color: #5383FF;
+    font-size: 8rem;
+    text-shadow: -0.18rem 0.18rem #031941;
   }
-  
-  /* Keyframes for animation */
-  @keyframes jumpLetter {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-30px);
-    }
+  .inscription{
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    margin-right: 1rem;
   }
-  
-  #first-letter {
-    font-size: 10rem;
-  }
+}

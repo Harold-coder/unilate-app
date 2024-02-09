@@ -4,6 +4,7 @@ import Axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import { urlServer } from "../../App";
 import Loading from "../../components/Loading/Loading";
+import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -101,7 +102,7 @@ function Login() {
             </form>
           </div>
 
-          <div className="arsenetest">
+          <div>
             <div className="right-form-a">
               <label className="login-label-a">Pas encore de compte?</label>
               <Link className="link" to="/signup"><button className="create-button-a">Créer un compte</button></Link>
