@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { urlServer } from "../../App";
 import Loading from "../../components/Loading/Loading";
+import './SignUp.css';
 
 function SignUp() {
   const [email, setEmail] = useState()
