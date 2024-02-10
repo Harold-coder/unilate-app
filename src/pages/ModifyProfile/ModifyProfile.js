@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { urlServer } from "../../App";
+import './ModifyProfile.css';
 
 // This page needs to be modified a lot hihi
 function ModifyProfile() {
