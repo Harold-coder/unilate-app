@@ -1,3 +1,14 @@
+.retard-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+    margin-bottom: 1rem;
+    width: 70%;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
 .retard-patient{
     font-size: 1.5rem;
     display: flex;
@@ -6,13 +17,12 @@
     align-items: center;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     border: 2px solid white;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 70%;
+    width: 35%;
     max-width: 35rem;
-    margin-bottom: 4rem;
     
 }
 .heure-patient{
@@ -21,13 +31,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 3rem;
+    margin-top: 1rem;
     border: 2px solid white;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 70%;
+    width: 35%;
     max-width: 35rem;
 }
 
@@ -58,4 +69,35 @@
     border-radius: 5px;
     appearance: none;
     cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .retard-container {
+        flex-direction: column;
+        width: 87%;
+    }
+
+    .retard-patient, .heure-patient {
+        width: 80%; /* Increase width for smaller screens */
+        max-width: 100%; /* Allow to expand to full container width */
+        margin-top: 0.5rem;
+    }
+
+    #retard-announced, .dropdown {
+        width: 80%; /* Increase width for better accessibility on touch devices */
+        height: auto; /* Allow for more flexible content spacing */
+        padding: 0.5rem 1rem; /* Increase padding for easier interaction */
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .retard-patient, .heure-patient {
+        font-size: 1.2rem; /* Adjust font size for readability on small devices */
+    }
+
+    #retard-announced, .dropdown {
+        font-size: 1.1rem; /* Adjust font size for consistency */
+    }
 }

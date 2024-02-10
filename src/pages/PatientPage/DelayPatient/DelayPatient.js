@@ -66,23 +66,25 @@ export default function DelayPatient() {
     if (loaded) {
         return (
             <div>
-                <div className="heure-patient">
-                    <p>Heure de votre rendez-vous:</p>
-                    <select className="dropdown" onChange={handlePatientAppointment}>
-                        <option value="0">...</option>
-                        <option value={hour}>{hour}h00</option>
-                        <option value={(hour+1)%24}>{(hour+1)%24}h00</option>
-                        <option value={(hour+2)%24}>{(hour+2)%24}h00</option>
-                        <option value={(hour+3)%24}>{(hour+3)%24}h00</option>
-                    </select>
-                </div>
-                {patientHour !== "0" && (
-                    <div className="retard-patient">
-                        <p>Retard annoncé:</p>
-                        <p id="retard-announced">{delayToText[delay]}</p>
+                <div className="retard-container">
+                    <div className="heure-patient">
+                        <p>Heure de votre rendez-vous:</p>
+                        <select className="dropdown" onChange={handlePatientAppointment}>
+                            <option value="0">...</option>
+                            <option value={hour}>{hour}h00</option>
+                            <option value={(hour+1)%24}>{(hour+1)%24}h00</option>
+                            <option value={(hour+2)%24}>{(hour+2)%24}h00</option>
+                            <option value={(hour+3)%24}>{(hour+3)%24}h00</option>
+                        </select>
                     </div>
-                    
-                )}
+                    {patientHour !== "0" && (
+                        <div className="retard-patient">
+                            <p>Retard annoncé:</p>
+                            <p id="retard-announced">{delayToText[delay]}</p>
+                        </div>
+                        
+                    )}
+                </div>
                 {patientHour !== "0" && (
                     <Notification doctorId={id}appointmentTime={patientHour}/>
                 )}

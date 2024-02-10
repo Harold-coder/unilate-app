@@ -1,4 +1,4 @@
-import DateTime from "../../components/DateTime/DateTime";
+// import DateTime from "../../components/DateTime/DateTime";
 import DoctorProfile from "../../components/DoctorProfile/DoctorProfile";
 import Navbar from "../../components/Navbar/Navbar";
 import { useParams } from 'react-router-dom'
@@ -45,7 +45,7 @@ function PatientPage() {
         job={doctor.specialty}
         />
       }
-      <DateTime/>
+      {/* <DateTime/> */}
       <DelayPatient/>
     </div>
   );

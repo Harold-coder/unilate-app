@@ -1,11 +1,13 @@
 .notification-container {
-    max-width: 600px;
+    width: 70%;
+    max-width: 33rem;
     margin: auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 8px;
     font-family: Arial, sans-serif;
+    margin-bottom: 1rem;
 }
 
 .notification-title {
@@ -55,6 +57,6 @@
 
 @media (max-width: 768px) {
     .notification-container {
-      width: 90%;
+      width: 65%;
     }
 }
