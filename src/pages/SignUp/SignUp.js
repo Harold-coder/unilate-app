@@ -7,14 +7,16 @@ import Loading from "../../components/Loading/Loading";
 import './SignUp.css';
 
 function SignUp() {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [fullName, setFullName] = useState()
-  const [profession, setProfession] = useState()
-  const [city, setCity] = useState()
-  const [phoneNumber, setPhoneNumber] = useState()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [fullName, setFullName] = useState("")
+  const [profession, setProfession] = useState("")
+  const [city, setCity] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
   const [picture, setPicture] = useState('man-white-brown')
+
+  const [stage, setStage] = useState(1);
 
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
 
@@ -79,6 +81,10 @@ function SignUp() {
     }
   };
 
+  const navigateToLogin = () => {
+    navigate('/login');
+  }
+
   const handleAvatarClick = (avatar) => {
     setPicture(avatar);
     setIsAvatarModalOpen(false); // Close the modal after selection
@@ -134,56 +140,88 @@ function SignUp() {
         <Loading/>
     }
     {!loading && 
-      <div className='login-page'>
-          <div className="signup-full-form">
-              <form className="signup-form">
-                  <div className="email-div">
-                  <label className="signup-label">Email</label>
-                  <input type="text" placeholder="email@example.com" className="login-input" onChange={(e) => setEmail(e.target.value)}></input>
-                  </div>
-                  <div className="email-div">
-                  <label className="signup-label">Nom et Prénom</label>
-                  <input type="text" placeholder="John Doe" className="login-input" onChange={(e) => setFullName(e.target.value)}></input>
-                  </div>
-                  <div className="email-div">
-                  <label className="signup-label">Ville</label>
-                  <input type="text" placeholder="Gembloux" className="login-input" onChange={(e) => setCity(e.target.value)}></input>
-                  </div>
-                  <div className="email-div">
-                  <label className="signup-label">Profession</label>
-                  <input type="text" placeholder="Gynécologue" className="login-input" onChange={(e) => setProfession(e.target.value)}></input>
-                  </div>
-                  <div className="email-div">
-                  <label className="signup-label">Numéro de telephone</label>
-                  <input type="text" placeholder="+32..." className="login-input" onChange={(e) => setPhoneNumber(e.target.value)}></input>
-                  </div>
-                  
-
-                  <div className="avatar-selector">
-                    <img 
-                      onClick={openAvatarModal}
-                      src={require(`../../images/${picture}.png`)} 
-                      alt="Selected Avatar" 
-                      className="selected-avatar-image"
-                    />
-                  </div>
-                  {isAvatarModalOpen && <AvatarModal />}
-
-                  <div className="password-div">
-                  <label className="signup-label">Mot de passe</label>
-                  <input type="password" placeholder="*********" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
-                  </div>
-                  <div className="password-div">
-                  <label className="signup-label">Confirmer le mot de passe</label>
-                  <input type="password" placeholder="*********" className="login-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                  {!passwordMatch && <label className="signup-label signup-label-red">Les mots de passe ne correspondent pas.</label>}
-                  {!validFormat && <label className="signup-label signup-label-red">Certains champs n'ont pas été complétés correctement.</label>}
-                  {error && <label className="signup-label signup-label-red">Une erreur est survenue.</label>}
-                  </div>
-                  <button className="signup-button" onClick={submitForm}>Créer le compte</button>
-              </form>
+      <form className="signup-form" onSubmit={submitForm}>
+        {stage === 1 && (
+          <div className="form-group">
+            <p className="signup-title"><span className="big-u">U</span>nilate</p>
+            <input type="email" placeholder="Email..." className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
+            <button type="button" className="form-next-btn" onClick={() => email.length > 8 && setStage(stage + 1)} disabled={email.length <=8}>Suivant</button>
+            <button type="button" className="form-next-btn already" onClick={navigateToLogin}>J'ai déjà un compte!</button>
           </div>
-      </div>
+        )}
+        {stage === 2 && (
+          <>
+            <div className="form-group">
+              <p className="signup-title"><span className="big-u">U</span>nilate</p>
+              <input type="text" placeholder="Nom et Prénom..." className="form-input" value={fullName} onChange={(e) => setFullName(e.target.value)} autoFocus />
+              <button type="button" className="form-next-btn" onClick={() => fullName.length > 4 && setStage(stage + 1)} disabled={fullName.length <=4}>Suivant</button>
+              <button type="button" className="form-back-btn" onClick={() => setStage(stage - 1)}>Précédent</button>
+            </div>
+          </>
+        )}
+        {stage === 3 && (
+          <>
+            <div className="form-group">
+              <p className="signup-title"><span className="big-u">U</span>nilate</p>
+              <input type="text" placeholder="Profession...." className="form-input" value={profession} onChange={(e) => setProfession(e.target.value)} autoFocus />
+              <button type="button" className="form-next-btn" onClick={() => profession.length > 2 && setStage(stage + 1)} disabled={profession.length <=2}>Suivant</button>
+              <button type="button" className="form-back-btn" onClick={() => setStage(stage - 1)}>Précédent</button>
+            </div>
+          </>
+        )}
+        {stage === 4 && (
+          <>
+            <div className="form-group">
+              <p className="signup-title"><span className="big-u">U</span>nilate</p>
+              <input type="text" placeholder="Ville..." className="form-input" value={city} onChange={(e) => setCity(e.target.value)} autoFocus />
+              <button type="button" className="form-next-btn" onClick={() => city.length > 1 && setStage(stage + 1)} disabled={city.length <=1}>Suivant</button>
+              <button type="button" className="form-back-btn" onClick={() => setStage(stage - 1)}>Précédent</button>
+            </div>
+          </>
+        )}
+        {stage === 5 && (
+          <>
+            <div className="form-group">
+              <p className="signup-title"><span className="big-u">U</span>nilate</p>
+              <input type="text" placeholder="Numéro de téléphone..." className="form-input" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} autoFocus />
+              <button type="button" className="form-next-btn" onClick={() => phoneNumber.length > 6 && setStage(stage + 1)} disabled={phoneNumber.length <=6}>Suivant</button>
+              <button type="button" className="form-back-btn" onClick={() => setStage(stage - 1)}>Précédent</button>
+            </div>
+          </>
+        )}
+        {stage === 6 && (
+          <>
+            <div className="form-group">
+              <p className="signup-title"><span className="big-u">U</span>nilate</p>
+              <div className="avatar-selector">
+                <img 
+                  onClick={openAvatarModal}
+                  src={require(`../../images/${picture}.png`)} 
+                  alt="Selected Avatar" 
+                  className="selected-avatar-image"
+                />
+              </div>
+              {isAvatarModalOpen && <AvatarModal />}
+              <button type="button" className="form-next-btn" onClick={() => setStage(stage + 1)}>Suivant</button>
+              <button type="button" className="form-back-btn" onClick={() => setStage(stage - 1)}>Précédent</button>
+            </div>
+          </>
+        )}
+        {stage === 7 && (
+          <>
+            <div className="form-group">
+              <p className="signup-title"><span className="big-u">U</span>nilate</p>
+              <input type="password" placeholder="Mot de Passe..." className="form-input password" value={password} onChange={(e) => setPassword(e.target.value)} autoFocus />
+              <input type="password" placeholder="Confirmer Le Mot de Passe..." className="form-input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} autoFocus />
+              {!passwordMatch && <p className="error-label">Les mots de passe ne correspondent pas.</p>}
+              {!validFormat && <p className="error-label">Certains champs n'ont pas été complétés correctement.</p>}
+              {error && <p className="error-label">Une erreur est survenue.</p>}
+              <button type="button" className="form-next-btn confirm" onClick={submitForm}>Confirmer!</button>
+              <button type="button" className="form-back-btn" onClick={() => setStage(stage - 1)}>Précédent</button>
+            </div>
+          </>
+        )}
+      </form>
     }
     </div>
   );

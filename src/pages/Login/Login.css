@@ -69,7 +69,7 @@
     text-decoration: none;
 }
 
-.login-full-form, .signup-full-form{
+.login-full-form{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -97,20 +97,14 @@
       width: 20rem;
     }
   }
-  
-  .signup-full-form{
-    height: 50rem;
-  }
-  .login-form, .signup-form{
+
+  .login-form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     height: 20rem;
     margin-bottom: 2rem;
-  }
-  .signup-form{
-    height: 47rem;
   }
   .password-div, .email-div{
     display: flex;
