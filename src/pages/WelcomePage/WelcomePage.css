@@ -39,3 +39,37 @@
     transform: scale(1.05); /* Slightly enlarge the buttons when hovered/focused */
     outline: none; /* Remove focus outline, use with caution */
   }
+
+  /* Responsive adjustments */
+@media (max-width: 768px) {
+  .welcome-h1 {
+    font-size: 2rem; /* Smaller font size for smaller screens */
+  }
+
+  .welcome-p {
+    font-size: 1rem; /* Smaller font size for smaller screens */
+    margin-bottom: 2em; /* Less margin to save space */
+  }
+
+  .welcome-button {
+    font-size: 1.2rem; /* Smaller font size for smaller screens */
+    padding: 0.75rem 1.5rem; /* Smaller padding for smaller screens */
+    margin: 0 2rem; /* Adjust margins for smaller screens */
+  }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+  .welcome-page {
+    padding: 10px; /* Add padding to avoid touching the screen edges */
+  }
+
+  .welcome-h1 {
+    font-size: 1.5rem; /* Even smaller font size */
+  }
+
+  .welcome-button {
+    margin: 0 1rem; /* Adjust margins for very small screens */
+    padding: 0.5rem 1rem; /* Further reduce padding */
+  }
+}
