@@ -17,10 +17,10 @@ const Notification = (props) => {
             });
 
             console.log(response.data);
-            alert("Subscription successful!");
+            alert("Nous vous enverrons un email si votre médecin annonce du retard pour votre rendez-vous!");
         } catch (error) {
             console.error("There was an error!", error);
-            alert("Subscription failed!");
+            alert("Une erreur est survenue...");
         }
     };
 

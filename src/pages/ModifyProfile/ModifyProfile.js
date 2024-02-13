@@ -149,7 +149,7 @@ function ModifyProfile() {
   return (
     <div>
     <Navbar/>
-    <div className='login-page'>
+    <div className='login-page-modify'>
       {loaded &&
         <div className="signup-full-form">
             <form className="signup-form">
